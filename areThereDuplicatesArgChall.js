@@ -20,12 +20,13 @@ function areThereDuplicates() {
 
   // make a frequency counter object from the argumets array
   let freqCounterArgs = {}
+
+  // for of is used to iterate over arrays typicallty
   for(let val of args) {
     freqCounterArgs[val] = (freqCounterArgs[val] || 0) + 1; 
   }
 
-  // console.log(freqCounterArgs);
-
+  // for in is used to iterate over objects  
   for(let key in freqCounterArgs){
     if( freqCounterArgs[key] > 1 ) return true; 
   } 
