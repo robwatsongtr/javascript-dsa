@@ -1,4 +1,6 @@
+// Linear Serch
 
+// O(n)
 
 function linSearch(arr, val) {
   for( var i = 0; i < arr.length; i++) {
