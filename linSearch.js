@@ -1,5 +1,5 @@
 // Linear Serch
-
+//
 // O(n)
 
 function linSearch(arr, val) {
