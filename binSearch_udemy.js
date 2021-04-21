@@ -1,7 +1,7 @@
 // Binary Search, Udemy Style 
 
 function binarySearch(arr, elem) {
-  let start = arr[0];
+  let start = 0;
   let end = arr.length - 1;
   let middle = Math.floor( ( start + end) / 2); // avg and round    
 
