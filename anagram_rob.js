@@ -1,6 +1,6 @@
 // anagram.js rob watson 'solution'
 
-function validAnagram(str1, str2) {
+function isAnagram(str1, str2) {
   if(str1.length !== str2.length) {
     return false;
   }
@@ -26,7 +26,7 @@ function validAnagram(str1, str2) {
   return true; 
 }
 
-console.log( validAnagram('qwerty', 'qeywrt') ); // true 
-console.log( validAnagram('aabbccdd', 'ddccaabb') ); // true
-console.log( validAnagram('aabbccdd', 'ddccaabbb') ); // false
+console.log( isAnagram('qwerty', 'qeywrt') ); // true 
+console.log( isAnagram('aabbccdd', 'ddccaabb') ); // true
+console.log( isAnagram('aabbccdd', 'ddccaabbb') ); // false
 
