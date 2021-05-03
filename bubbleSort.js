@@ -10,11 +10,12 @@ function swap(arr, idx1, idx2) {
 function bubbleSort(arr) {
   for( var i = arr.length; i > 0; i-- ) {
     for( var j = 0; j < i - 1; j++) {
-      // console.log(arr);
+      console.log(arr);
       if( arr[j] > arr[j+1]) {
         swap(arr, j, j + 1);
       }
     }
+    console.log("one pass complete");
   }
   return arr; 
 }
