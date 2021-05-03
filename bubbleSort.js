@@ -1,5 +1,6 @@
 // bubble sort 
-
+// noSwaps is the optimizaiton for a nearly sorted array,
+// it allows for nearly O(n) if the array is nearly sorted. 
 
 function swap(arr, idx1, idx2) {
   var temp = arr[idx1];
@@ -8,6 +9,7 @@ function swap(arr, idx1, idx2) {
 }
 
 function bubbleSort(arr) {
+  var noSwaps; 
   for( var i = arr.length; i > 0; i-- ) {
     noSwaps = true; 
     for( var j = 0; j < i - 1; j++) {
@@ -18,7 +20,7 @@ function bubbleSort(arr) {
       }
     }
     if(noSwaps) break; 
-    console.log("one pass complete");
+    // console.log("one pass complete");
   }
   return arr; 
 }
