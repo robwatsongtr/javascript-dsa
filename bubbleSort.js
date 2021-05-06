@@ -1,4 +1,9 @@
-// bubble sort 
+// bubble sort:
+// array is scanned from beginning if current value is larger than the value
+// next to it, they are swapped, otherwise move on to next value.
+// with each succesive pass through the array the largest values bubble to 
+// the end. 
+
 // noSwaps is the optimizaiton for a nearly sorted array,
 // it allows for nearly O(n) if the array is nearly sorted. 
 
