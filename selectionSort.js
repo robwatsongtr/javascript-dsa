@@ -23,7 +23,7 @@ function selectionSort(arr) {
     console.log("SWAPPING TO:"); 
 
     if ( i !== lowest) swap(arr, i, lowest);
-    
+      
     console.log(arr)
     console.log("********************")
   }
