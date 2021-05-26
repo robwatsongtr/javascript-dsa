@@ -40,4 +40,7 @@ function mergeSort(arr) {
 
 }
 
-console.log( mergeSort([10,24,73,76]) )
+let arrInput = Array.from( { length: 100000 }, 
+  () => Math.floor(Math.random() * 100000));
+
+console.log( mergeSort( arrInput ) ); 

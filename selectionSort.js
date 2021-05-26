@@ -24,5 +24,9 @@ function selectionSort(arr) {
   return arr; 
 }
 
-console.log( selectionSort([34,22,10,19,17]) );
+// 9 seconds 
+let arrInput = Array.from( { length: 100000 }, 
+  () => Math.floor(Math.random() * 100000));
+
+console.log( selectionSort( arrInput ) );
 

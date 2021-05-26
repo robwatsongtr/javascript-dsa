@@ -21,5 +21,9 @@ function insertionSort(arr) {
   return arr;  
 }
 
+// 6 seconds roughly 
 
-console.log( insertionSort([2,1,9,76,4]) );
+let arrInput = Array.from( { length: 100000 }, 
+  () => Math.floor(Math.random() * 100000));
+
+console.log( insertionSort( arrInput) );
