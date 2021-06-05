@@ -1,4 +1,4 @@
-// In order to implement merge sort, first implement a function 
+// In order to implement quick sort, first implement a function 
 // responsible for arranging elements in an array on _either side of a pivot_
 
 // Given an array this helper function should designate an element 

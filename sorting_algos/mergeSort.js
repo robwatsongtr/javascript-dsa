@@ -40,7 +40,7 @@ function mergeSort(arr) {
 
 }
 
-let arrInput = Array.from( { length: 100000 }, 
-  () => Math.floor(Math.random() * 100000));
+let arrInput = Array.from( { length: 1000000 }, 
+  () => Math.floor(Math.random() * 1000000) );
 
 console.log( mergeSort( arrInput ) ); 
