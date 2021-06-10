@@ -3,7 +3,6 @@
 // a linked list is simply a collection of nodes that point from one end 
 // to another in sequence, the next of one node points to the next node, etc. 
 
-
 class Node {
   constructor(val) {
     this.val = val; 
@@ -37,6 +36,7 @@ class SinglyLinkedList {
     return this;  // return list 
   }
 
+  // print out the entire list  
   traversePrint() {
     let current = this.head
     while( current ) {
@@ -47,7 +47,21 @@ class SinglyLinkedList {
   
   // pop removes the node at the end of the list. 
   pop() {
-
+    if( !this.head ) return undefined; 
+    
+    // at beginnig of list current and newTail (one before) are the same
+    let current = this.head;
+    let newTail = current;  
+    
+    // while there is a next...
+    while( current.next ) {
+      newTail = current; 
+      current = current.next; // current will always end up one after newTail 
+    }
+    this.tail = newTail; // the new tail is now one before the old tail 
+    this.tail.next = null; // sever the connection to the old tail
+    this.length--; // decrement the list length by 1
+    return current; 
   }
 
 
