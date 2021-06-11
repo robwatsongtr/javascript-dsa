@@ -21,7 +21,7 @@ class Queue {
     this.size = 0;
   }
 
-  // same as singly linked list Push 
+  // same as singly linked list Push, adds a node to the end of the list
   enqueue(val) {
     let newNode = new Node(val);
 
@@ -37,7 +37,7 @@ class Queue {
 
   }
 
-  // same as stack pop 
+  // same as stack pop, pops from the beginning of the list.
   dequeue() {
     if( !this.first ) return null;
     let temp = this.first; // grab the top/first value right now 
