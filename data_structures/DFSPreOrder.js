@@ -1,21 +1,8 @@
 // Trees
 //
-// Breadth First Search
+// Depth First Search Pre Order 
 //
-// Starting at root (at the top) you vist all the nodes on each horizontal level,
-// Then all the nodes on the next horizontal level, down, etc. etc: 
-/*
-          10
-      6       15
-    3   8       20
 
-  BFS: [10, 6, 15, 3, 8, 20]
-*/
-
-// Queue will be used, model a queue with an array, use PUSH/ENQUEUE to add at 
-// the end and SHIFT/DEQUEUE to remove from the beginng.
-
-// The queue is used to store the total nodes for each horzontal level
 
 class Node {
   constructor(val) {
@@ -66,23 +53,13 @@ class BinaryTree {
 
   }
 
-  // breadth first search, using a queue to store visited nodes 
-  BFS() {
+  
+  DFS_PreOrder() {
 
-    let data = []; // will return this at the end 
-    let queue = []; // store visited nodes in queue
-    let atNode = this.root; // atNnode is current position in the tree 
 
-    queue.push(atNode); // enqueue the root into the queue 
+
     
-    // while there's anything in the queue, dequeue from the queue
-    while( queue.length ) {
-      atNode = queue.shift(); // take a node/value out of the queue
-      data.push(atNode.val); // push it into the return array 
-      if(atNode.left) queue.push(atNode.left); // if there's a left put it in the queue
-      if(atNode.right) queue.push(atNode.right); // if there's a right put it in the queue
-    }
-    return data; 
+    
   }
 }
 
@@ -96,5 +73,4 @@ myTree.insert(2);
 myTree.insert(16);
 myTree.insert(7);
 
-console.log( myTree.BFS() ); // [10, 5, 13, 2, 7, 11, 16]
-
+console.log( myTree.DFS_PreOrder() ); // 
