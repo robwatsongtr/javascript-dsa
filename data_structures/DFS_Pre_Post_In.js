@@ -1,6 +1,6 @@
 // Trees
 //
-// Depth First Search Pre Order 
+// Depth First Search: PreOrder, PostOrder, InOrder
 //
 
 
@@ -58,7 +58,7 @@ class BinaryTree {
 
 
 
-    
+
     
   }
 }
