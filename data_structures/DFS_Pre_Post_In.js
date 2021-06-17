@@ -4,8 +4,12 @@
 //
 /*
 
-PreOrder: Starting at root, visit a node itself, then the left, then right. 
-Node, left, Right.
+// ALl DFS Algos: traverse down to the end of the tree, then back up. 
+
+// RECURSION makes the most sense for concise code, because 
+// the root node makes a natural base case to work towards 
+
+PreOrder: Node, left, Right.
 Example:
 
              10
@@ -19,16 +23,23 @@ Example:
 PostOrder: All chldren are explored of a node before the node itself, so its
 Left, Right, then Node. 
 
+           10
+        6     15
+      3   8     20
 
-
+[3, 8, 6, 20, 15, 10]
 
 ---------------------------------------------------------------
 
 InOrder: Left, Node, Right
 
+           10
+        6     15
+      3   8     20
 
+[3, 6, 8, 10, 15, 20]
 
-
+-----------------------------------------------------------------
 */
 
 class Node {
@@ -79,13 +90,14 @@ class BinaryTree {
 
   }
 
-  // push Node value into result array first ("Pre"), then visit left and right 
+  // push Node value into result array first ("Pre"), then visit left and right
+  // of a leaf 
   DFS_PreOrder() {
     let data = [];
     
     // recursive helper function 
     function traverse( node ) {
-      data.push( node.val ); // push the value of the node into data array 
+      data.push( node.val ); // 'visit', ie record the value of the node itself
       if( node.left ) traverse( node.left );
       if( node.right ) traverse( node.right ); 
     }
@@ -94,27 +106,27 @@ class BinaryTree {
     return data; 
   }
 
-  // Visit Left and Right then Node, THEN put results into array ("Post")
+  // Visit Left and Right then Node of a leaf
   DFS_PostOrder() {
     let data = []
 
     function traverse( node ) {
       if( node.left ) traverse( node.left );
       if( node.right ) traverse ( node.right );
-      data.push( node.val );
+      data.push( node.val ); // 'visit', ie record the value of the node itself
     }
 
     traverse( this.root ); // the actual function call
     return data; 
   }
 
-  // Visit the Left, Node, then Right, put results in to array ("In")
+  // Visit the Left, Node, then Right of a leaf
   DFS_InOrder() {
     let data = [];
 
     function traverse( node ) {
       if( node.left ) traverse( node.left );
-      data.push( node.val );
+      data.push( node.val ); // 'visit', ie record the value of the node itself
       if( node.right ) traverse( node.right );
     }
 
@@ -130,7 +142,6 @@ var myTree = new BinaryTree()
            10
       5        13
     2   7    11   16
-
 */
 
 myTree.insert(10);
@@ -141,8 +152,28 @@ myTree.insert(2);
 myTree.insert(16);
 myTree.insert(7);
 
+console.log( 'mytree PreOrder:', myTree.DFS_PreOrder() ); // [10, 5, 2, 7, 13, 11, 16]
+console.log( 'mytree PostOrder:', myTree.DFS_PostOrder() ); // [2, 7, 5, 11, 16, 13, 10 ]
+console.log( 'mytree InOrder:', myTree.DFS_InOrder() ); // [2, 5, 7, 10, 11, 13, 16]
 
 
-console.log( myTree.DFS_PreOrder() ); // [10, 5, 2, 7, 13, 11, 16]
-console.log( myTree.DFS_PostOrder() ); // [2, 7, 5, 11, 16, 13, 10 ]
-console.log( myTree.DFS_InOrder() ); // [2, 5, 7, 10, 11, 13, 16]
+/* example from the top of code: 
+
+           10
+        6     15
+      3   8     20
+
+*/
+var myTree2 = new BinaryTree()
+
+myTree2.insert(10);
+myTree2.insert(6);
+myTree2.insert(15);
+myTree2.insert(3);
+myTree2.insert(8);
+myTree2.insert(20);
+
+console.log( 'mytree2 PreOrder:', myTree2.DFS_PreOrder() );
+console.log( 'mytree2 PostOrder:', myTree2.DFS_PostOrder() );
+console.log( 'mytree2 InOrder:', myTree2.DFS_InOrder() );
+
