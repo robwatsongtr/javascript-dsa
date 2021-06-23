@@ -1,7 +1,8 @@
 /*
 ---GRAPHS---
 
-Edge: connection. Vertex: node. 
+Edge: connection. 
+Vertex: node. 
 
 _Undirected graph_: two way connection or no specified connection of the edge
 between two verticies. _Directed graph_: one way connection between two verticies.
@@ -27,10 +28,59 @@ lookup a specific edge, and Adj Matrix can be faster to look up specific edge.
 
 */
 
-// Adjacency List implementation.
+// Adjacency List implementation. Undirected. 
 
 class Graph {
   constructor() {
-    this.adjacencyList = {};
+    this.adjacencyList = {}; // adjacency list is a map/hash table 
+  }
+
+  // addVertex
+  // if no duplilcate, make an entry in the adjacently list map
+  // that is { vertex: [] }, name is vertex name, value is empty array.
+  addVertex( vertex ) {
+    if( !this.adjacencyList[vertex] ) {
+      this.adjacencyList[vertex] = [];
+    }
+  }
+
+  // addEdge
+  // find in the adjacency list vertex1, and push into vertex2
+  // and do the opposite, since we have an undirecdted two way graph.
+  addEdge( vertex1, vertex2 ) {
+    this.adjacencyList[vertex1].push(vertex2);
+    this.adjacencyList[vertex2].push(vertex1);
+  }
+
+  // removeEdge 
+  // reassign the key of vertex 1 to be an array that does not contain vertex2
+  // reassign the key of vertex 2 to be an array that does not contain vertex1
+  removeEdge( vertex1, vertex2 ) { 
+    this.adjacencyList[vertex1] = this.adjacencyList[vertex1].filter(
+      v => v !== vertex2
+    )
+    this.adjacencyList[vertex2] = this.adjacencyList[vertex2].filter(
+      v => v !== vertex1
+    )
   }
 }
+
+
+
+var g = new Graph();
+
+g.addVertex("Dallas");
+g.addVertex("Tokyo");
+g.addVertex("Aspen");
+
+g.addEdge("Dallas","Tokyo");
+g.addEdge("Dallas", "Aspen");
+g.addEdge("Tokyo", "Aspen");
+
+console.log(g.adjacencyList);
+
+g.removeEdge('Dallas', 'Aspen');
+console.log(g.adjacencyList);
+
+g.removeEdge('Dallas', 'Tokyo');
+console.log(g.adjacencyList);
