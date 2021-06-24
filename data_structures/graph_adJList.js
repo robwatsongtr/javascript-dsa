@@ -63,6 +63,17 @@ class Graph {
       v => v !== vertex1
     )
   }
+
+  // while loop 'pops off' the edges from the passed in vertex 
+  // to remove all references 
+  removeVertex( vertex ) {
+    while( this.adjacencyList[vertex].length ) {
+        const adjacentVertex = this.adjacencyList[vertex].pop();
+        this.removeEdge( vertex, adjacentVertex );
+    }
+    delete this.adjacencyList[vertex]; // delete the vertex itself
+  }
+
 }
 
 
@@ -72,15 +83,25 @@ var g = new Graph();
 g.addVertex("Dallas");
 g.addVertex("Tokyo");
 g.addVertex("Aspen");
+g.addVertex("Los Angeles");
+g.addVertex("Hong Kong");
 
 g.addEdge("Dallas","Tokyo");
 g.addEdge("Dallas", "Aspen");
-g.addEdge("Tokyo", "Aspen");
+g.addEdge("Hong Kong", "Tokyo");
+g.addEdge("Hong Kong", "Dallas");
+g.addEdge("Los Angeles", "Hong Kong");
+g.addEdge("Los Angeles", "Aspen");
 
 console.log(g.adjacencyList);
 
-g.removeEdge('Dallas', 'Aspen');
+g.removeVertex("Hong Kong");
+
 console.log(g.adjacencyList);
 
-g.removeEdge('Dallas', 'Tokyo');
-console.log(g.adjacencyList);
+
+// g.removeEdge('Dallas', 'Aspen');
+// console.log(g.adjacencyList);
+
+// g.removeEdge('Dallas', 'Tokyo');
+// console.log(g.adjacencyList);
