@@ -1,5 +1,5 @@
 /*
-DFS Graph
+DFS Graph Traversal
 
 'Depth First' in general for trees and graphs: prioritizing vising children of a 
 given node before visitiing siblings of a node. 
@@ -56,6 +56,17 @@ class Graph {
         this.removeEdge( vertex, adjacentVertex );
     }
     delete this.adjacencyList[vertex]; // delete the vertex itself
+  }
+
+  DFS_recursive( vertex ) {
+    let result = [];
+    let visited = {}; // object to store visited nodes 
+
+    // recursive helper function to do the work 
+    function DFS( vertex ) {
+
+    }
+     
   }
 
 }
