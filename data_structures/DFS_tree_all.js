@@ -8,6 +8,7 @@
 
 // RECURSION makes the most sense for concise code, because 
 // the root node makes a natural base case to work towards 
+// and every leaf is itself a tree. 
 
 PreOrder: Node, left, Right.
 Example:
