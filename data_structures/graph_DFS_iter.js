@@ -1,5 +1,5 @@
 /*
-DFS Graph Traversal
+DFS Graph Traversal ITERATIVE
 
 'Depth First' in general for trees and graphs: prioritizing vising children of a 
 given node before visitiing siblings of a node. 
@@ -15,14 +15,8 @@ Explore as far as possible before we back-track:
 Once a node is visitied, it is 'crossed off' the adjacency list so it isn't' 
 re-visited. 
 
-DFS_RECUR(Vertex)
-  if vertex is empty 
-    return // base case
-  add vertex to results list
-  mark vertex as visited
-  for each neighbor in vertex's neighbors:
-    if neighbor is not visited:
-      recursively call DFS on neighbor
+DFS_iterative(Vertex)
+  
 
 */
 
@@ -70,31 +64,20 @@ class Graph {
     delete this.adjacencyList[vertex]; // delete the vertex itself
   }
 
-  DFS_recursive( start ) {
-    let result = []; // array to return 
-    let visited = {}; // object to store visited nodes 
-    let adjacencyList = this.adjacencyList; // otherwise would get error 
+  // DFS ITERATIVE -------------------------------------------------------------------
 
-    (function dfs(vertex) {
-      if( !vertex ) return null; // base case return if vertex is empty we're done 
-      visited[vertex] = true; // mark that vertex as visited, eg  { A : True}
-      result.push(vertex);  // push vertex into result array 
 
-      // loop over values in adjacency list (neighbors) for that vertex
-      // if any have not been visited, recursively invoke helper func with that vertex
-      // here we are using the Immediately Invoked Function Expression pattern 
-      adjacencyList[vertex].forEach(neighbor => {
-        if(!visited[neighbor]) {
-          return dfs(neighbor); // recursively invoke helper func with that vertex
-        }
-      });
-
-    })(start); // invoke helper function with starting vertex 
-
-    return result; 
+  DFS_iterative( start ) {
+    
   }
 
 }
+
+
+
+
+
+
 /*
 Example graph:
 
@@ -126,5 +109,5 @@ g.addEdge("D", "E");
 g.addEdge("D", "F");
 g.addEdge("E", "F");
 
-console.log(g.adjacencyList);
-console.log( g.DFS_recursive("A") );
+console.log( g.adjacencyList );
+console.log( g.DFS_iterative("A") );

@@ -24,9 +24,29 @@
 
       I'm surmising that's what we use the Inorder array for. 
 
+*/
 
+/* 
+
+Output: 
+
+node reconstructTree.js 
+Node {
+  val: 5,
+  left: Node {
+    val: 3,
+    left: Node { val: 1, left: null, right: null },
+    right: Node { val: 4, left: null, right: null }
+  },
+  right: Node {
+    val: 8,
+    left: null,
+    right: Node { val: 10, left: null, right: null }
+  }
+} 
 
 */
+
 
 class Node {
   constructor(val) {
@@ -39,3 +59,5 @@ class Node {
 function reconstructTree(preorder, inorder) {
   return new Node(0)
 }
+
+
