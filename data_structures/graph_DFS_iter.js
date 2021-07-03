@@ -15,8 +15,14 @@ Explore as far as possible before we back-track:
 Once a node is visitied, it is 'crossed off' the adjacency list so it isn't' 
 re-visited. 
 
-DFS_iterative(Vertex)
-  
+ITERATIVE: instead of using the call stack to keep track of visited, we use 
+  an actual stack in the code. 
+
+DFS_iterative( start )
+  let S be a stack
+  S.push( start )
+  while S !empty
+    vertex
 
 */
 
@@ -65,7 +71,6 @@ class Graph {
   }
 
   // DFS ITERATIVE -------------------------------------------------------------------
-
 
   DFS_iterative( start ) {
     
