@@ -92,6 +92,7 @@ class Graph {
       currentVertex = stack.pop(); // store what we're popping off 
       result.push( currentVertex ); // add the vertex to the result array
 
+      // loop through the neighbors to visit them and push the verticies on to the stack
       adjacencyList[currentVertex].forEach(neighbor => { 
         if( !visited[neighbor] ) {
           visited[neighbor] = true; 
