@@ -77,7 +77,7 @@ class Graph {
     let visited = {}; // object to store visited nodes 
     let adjacencyList = this.adjacencyList; // otherwise would get error 
 
-    (function dfs(vertex) {
+    (function dfs( vertex ) {
       if( !vertex ) return null; // base case return if no more to visit 
       visited[vertex] = true; // mark that vertex as visited, eg  { A : True}
       result.push(vertex);  // push vertex into result array 
@@ -86,8 +86,8 @@ class Graph {
       // if any have not been visited, recursively invoke helper func with that vertex
       // here we are using the Immediately Invoked Function Expression pattern 
       adjacencyList[vertex].forEach(neighbor => {
-        if(!visited[neighbor]) {
-          return dfs(neighbor); // recursively invoke helper func with that vertex
+        if( !visited[neighbor] ) {
+          return dfs( neighbor ); // recursively invoke helper func with that vertex
         }
       });
 

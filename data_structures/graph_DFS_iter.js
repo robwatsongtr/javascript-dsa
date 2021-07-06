@@ -22,7 +22,12 @@ DFS_iterative( start )
   let S be a stack
   S.push( start )
   while S !empty
-    vertex
+    vertex = S.pop()
+    if vertex is not labeled as discovered:
+      visit vertex (add to result list)
+      label vertex as discovered
+      for each of vertex's neighbors, push on to stack
+        N do S.push(N)
 
 */
 
@@ -73,7 +78,28 @@ class Graph {
   // DFS ITERATIVE -------------------------------------------------------------------
 
   DFS_iterative( start ) {
-    
+    let stack = [];
+    let result = [];
+    let visited = {};
+    let currentVertex; 
+    let adjacencyList = this.adjacencyList; 
+
+    stack.push( start ); // add starting vertex to stack
+    visited[start] = true // mark starting vertex as visited
+
+    while( stack.length > 0 ) {
+      console.log(stack);
+      currentVertex = stack.pop(); // store what we're popping off 
+      result.push( currentVertex ); // add the vertex to the result array
+
+      adjacencyList[currentVertex].forEach(neighbor => { 
+        if( !visited[neighbor] ) {
+          visited[neighbor] = true; 
+          stack.push(neighbor);
+        }
+      }); 
+    }
+    return result; 
   }
 
 }
