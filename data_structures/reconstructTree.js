@@ -24,6 +24,9 @@
 
       I'm surmising that's what we use the Inorder array for. 
 
+      YEs that's what it's for. The Inorder array gives left / right info,
+      while, Preorder essentially gives us the root. 
+
 */
 
 /* 
@@ -55,6 +58,8 @@ class Node {
       this.right = null
   }
 }
+
+
 
 function reconstructTree(preorder, inorder) {
   return new Node(0)

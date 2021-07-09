@@ -71,6 +71,8 @@ class Graph {
   }
 
   // DFS RECURSIVE----------------------------------------------------------------------
+  // Works through the adjacency list differently than iterative: from the beginning
+  // of each entry in the adjacency list instead of the end.
 
   DFS_recursive( start ) {
     let result = []; // array to return 

@@ -76,6 +76,8 @@ class Graph {
   }
 
   // DFS ITERATIVE -------------------------------------------------------------------
+  // Works through the adjacency list differently than recursive: from the end
+  // of each entry in the adjacency list instead of the beginning. 
 
   DFS_iterative( start ) {
     let stack = [];
