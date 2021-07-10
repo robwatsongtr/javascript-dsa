@@ -1,4 +1,14 @@
+/*
+BFS Graph Traversal
 
+Visit neighbors at 'current depth' first!
+
+Prioritizes visiting all the neighbors at a given depth before moving downwards
+or visiting neighbors of neighbors.
+
+Key point: BFS uses a queue data structure as opposed to stack structure for DFS.s
+
+*/
 
 
 
