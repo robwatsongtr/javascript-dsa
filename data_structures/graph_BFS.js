@@ -59,7 +59,7 @@ class Graph {
   // BFS ----------------------------------------------------------------------
   
   BFS_graph( start ) {
-    
+
     let queue = [];
     let result = [];
     let visited = {};
@@ -70,6 +70,8 @@ class Graph {
     visited[start] = true; 
     
     while( queue.length > 0 ){
+
+      console.log(queue);
 
       // remove vertex from front of queue and push into result array
       currentVertex = queue.shift(); 
@@ -122,4 +124,4 @@ g.addEdge("D", "F");
 g.addEdge("E", "F");
 
 console.log(g.adjacencyList);
-console.log( );
+console.log( g.BFS_graph("A") );
