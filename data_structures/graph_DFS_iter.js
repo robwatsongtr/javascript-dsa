@@ -90,6 +90,7 @@ class Graph {
     visited[start] = true // mark starting vertex as visited
 
     while( stack.length > 0 ) {
+
       console.log(stack);
       currentVertex = stack.pop(); // store what we're popping off 
       result.push( currentVertex ); // add the vertex to the result array
@@ -101,6 +102,7 @@ class Graph {
           stack.push(neighbor);
         }
       }); 
+      
     }
     return result; 
   }

@@ -58,6 +58,36 @@ class Graph {
 
   // BFS ----------------------------------------------------------------------
   
+  BFS_graph( start ) {
+    
+    let queue = [];
+    let result = [];
+    let visited = {};
+    let currentVertex;
+    let adjacencyList = this.adjacencyList; 
+
+    queue.push( start )
+    visited[start] = true; 
+    
+    while( queue.length > 0 ){
+
+      // remove vertex from front of queue and push into result array
+      currentVertex = queue.shift(); 
+      result.push( currentVertex);
+
+      // Loop over each vertex in the adj list for the vertex you are visitng.
+      // if it is not inside the object that stores visited nodes, mark it as
+      // visited and enqueue (push) that vertex.
+      adjacencyList[currentVertex].forEach( neighbor  => {
+        if( !visited[neighbor] ) {
+          visited[neighbor] = true; 
+          queue.push( neighbor ); 
+        }
+      });
+
+    }
+    return result; 
+  }
 
 }
 /*
