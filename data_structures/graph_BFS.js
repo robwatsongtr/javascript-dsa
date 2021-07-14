@@ -65,17 +65,20 @@ class Graph {
     let visited = {};
     let currentVertex;
     let adjacencyList = this.adjacencyList; 
+    visited[start] = true; 
 
     queue.push( start )
     visited[start] = true; 
     
     while( queue.length > 0 ){
 
-      console.log(queue);
+      // lets see what's going on, yay! 
+      console.log('queue: ', queue);
+      console.log('result:', result); 
 
       // remove vertex from front of queue and push into result array
       currentVertex = queue.shift(); 
-      result.push( currentVertex);
+      result.push( currentVertex );
 
       // Loop over each vertex in the adj list for the vertex you are visitng.
       // if it is not inside the object that stores visited nodes, mark it as
@@ -123,5 +126,5 @@ g.addEdge("D", "E");
 g.addEdge("D", "F");
 g.addEdge("E", "F");
 
-console.log(g.adjacencyList);
+// console.log(g.adjacencyList);
 console.log( g.BFS_graph("A") );
