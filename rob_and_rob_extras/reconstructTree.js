@@ -1,4 +1,4 @@
-// courtesy of Robert Diamond 
+// solution courtesy of Robert Diamond 
 
 /*
            5

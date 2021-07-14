@@ -1,4 +1,5 @@
 // reverse a string using a stack, just for fun
+// by Rob Watson 
 
 const revStringStack = (str) => {
   let splitString = str.split("");
