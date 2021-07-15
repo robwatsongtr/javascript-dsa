@@ -25,3 +25,7 @@ const revStringStack = (str) => {
 
 console.log( revStringStack("Robert") ) // treboR
 console.log( revStringStack('abcdefg') ) // gfedcba
+
+// Robert's one-liner: 
+
+// result = ""; for (let i = st.length - 1; i >= 0; i++) { result.concat(st[i]) }

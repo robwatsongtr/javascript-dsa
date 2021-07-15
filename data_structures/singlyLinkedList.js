@@ -10,6 +10,7 @@ class Node {
   }
 }
 
+// an SLL must have a head and a tail and a length 
 class SinglyLinkedList {
   constructor() {
     this.head = null;
