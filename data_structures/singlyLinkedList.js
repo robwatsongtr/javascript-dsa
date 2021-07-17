@@ -46,7 +46,7 @@ class SinglyLinkedList {
     }
   }
   
-  // pop removes the node at the end of the list. 
+  // POP removes the node at the END of the list. 
   pop() {
     if( !this.head ) return undefined; 
     
@@ -64,6 +64,13 @@ class SinglyLinkedList {
     this.length--; // decrement the list length by 1
     return current; 
   }
+
+  // get the head value, delete the head, move the head to next node
+  shift() {
+    
+  }
+
+
 
 
 }
