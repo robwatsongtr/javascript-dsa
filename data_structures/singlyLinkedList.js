@@ -40,13 +40,18 @@ class SinglyLinkedList {
   // print out the entire list  
   traversePrint() {
     let current = this.head
+    // while there is a current 
     while( current ) {
       console.log( current.val );
-      current = current.next;  
+      current = current.next; // on to the next node, then next, etc
     }
   }
   
   // POP removes the node at the END of the list. 
+  // 
+  // What's tricky about POP on an SLL is that we need to keep 
+  // a 'previous variable', one b4 old tail,  in this case 'newTail' in order to 
+  // determine what the new tail is going to be
   pop() {
     if( !this.head ) return undefined; 
     
@@ -54,11 +59,14 @@ class SinglyLinkedList {
     let current = this.head;
     let newTail = current;  
     
-    // while there is a next...
+    // while there is a next, i.e. go to tail 
+    // this loop ensures that newTail will always be one before current 
     while( current.next ) {
       newTail = current; 
       current = current.next; // current will always end up one after newTail 
     }
+    // now we go through the process of making newTail as the tail, and returning 
+    // current. 
     this.tail = newTail; // the new tail is now one before the old tail 
     this.tail.next = null; // sever the connection to the old tail
     this.length--; // decrement the list length by 1
@@ -67,7 +75,7 @@ class SinglyLinkedList {
 
   // get the head value, delete the head, move the head to next node
   shift() {
-    
+     
   }
 
 
