@@ -70,12 +70,25 @@ class SinglyLinkedList {
     this.tail = newTail; // the new tail is now one before the old tail 
     this.tail.next = null; // sever the connection to the old tail
     this.length--; // decrement the list length by 1
+
+    // special case if we're popping off the final value
+    if( this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
     return current; 
   }
 
+  // shift: removing from the front of the list
   // get the head value, delete the head, move the head to next node
   shift() {
-     
+    if( !this.head ) return undefined;
+    
+    let returnedItem = this.head;
+    this.head = this.head.next; 
+    this.length--;
+    return returnedItem;
+  
   }
 
 
@@ -91,4 +104,21 @@ list1.push("and");
 list1.push("goodbye");
 list1.push(447);
 
-list1.traversePrint();
+// console.log(list1);
+
+// list1.traversePrint();
+
+// console.log(list1.pop())
+// console.log(list1.pop())
+// console.log(list1.pop())
+// console.log(list1.pop())
+// console.log(list1.pop())
+// console.log(list1.pop())
+// console.log(list1.pop())
+
+// console.log(list1);
+
+console.log( list1.shift() );
+console.log( list1.shift() );
+console.log( list1.shift() );
+console.log( list1.shift() );
