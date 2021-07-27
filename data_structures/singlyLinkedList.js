@@ -18,7 +18,8 @@ class SinglyLinkedList {
     this.length = 0; 
   }
 
-  // push adds a node to the end of the list 
+
+  // PUSH adds a node to the END of the list 
   push(val) {
     // make a new node and pass in the val 
     let newNode = new Node(val);
@@ -46,6 +47,8 @@ class SinglyLinkedList {
       current = current.next; // on to the next node, then next, etc
     }
   }
+
+
   
   // POP removes the node at the END of the list. 
   // 
@@ -79,18 +82,76 @@ class SinglyLinkedList {
     return current; 
   }
 
-  // shift: removing from the front of the list
+
+  // SHIFT: removing from the BEGINNING of the list
   // get the head value, delete the head, move the head to next node
   shift() {
     if( !this.head ) return undefined;
-    
+
     let returnedItem = this.head;
     this.head = this.head.next; 
     this.length--;
+
+    if( this.length === 0) {
+      this.tail = null; 
+    }
     return returnedItem;
-  
   }
 
+  // UNSHIFT: ADDS a new node to the BEGINNING of the list. 
+  unshift(val) {
+    let newNode = new Node(val);
+
+    // like in POP, if the list is empty, ie no head, set the head and tail
+    // to be the newly created node. Else.... 
+    if( !this.head ) {
+      this.head = newNode;
+      this.tail = this.head; 
+    } else {
+      newNode.next = this.head; // wire up the new node to the head
+      this.head = newNode; // make the new node the head now 
+    }
+    this.length++; 
+    return this; 
+  }
+
+  // GET: retrieves a value from a node at a point indexed in from the head
+  // 0 indexing in this case. 
+  get(index) {
+    // bounds checking
+    if( index < 0 || index >= this.length) return null; 
+    
+    let current = this.head;
+    let counter = 0;
+
+    while( counter !== index ) {
+      current = current.next; 
+      counter++; 
+    }
+    return current; 
+  }
+
+  // SET: changes a value of a node at a point indexed in from the head, 0 indexing
+  set(index, val) {
+    let foundNode = this.get(index);
+    if( foundNode === null ) return false; 
+    foundNode.val = val; 
+    return true; 
+
+    /*
+    Colt's solution:
+
+    var foundNode = this.get(index);
+    if( foundNode ) {
+      foundNode.val = val;
+      return true;
+    }
+    return false; 
+
+    */
+
+    
+  }
 
 
 
@@ -103,22 +164,42 @@ list1.push("Hello");
 list1.push("and");
 list1.push("goodbye");
 list1.push(447);
+list1.push("<3");
 
 // console.log(list1);
+
+list1.traversePrint();
+
+// console.log(list1.pop())
+// console.log(list1.pop())
+// console.log(list1.pop())
+// console.log(list1.pop())
+// console.log(list1.pop())
+// console.log(list1.pop())
+// console.log(list1.pop())
+
+// console.log(list1);
+
+// console.log( list1.shift() );
+// console.log( list1.shift() );
+// console.log( list1.shift() );
+// console.log( list1.shift() );
 
 // list1.traversePrint();
 
-// console.log(list1.pop())
-// console.log(list1.pop())
-// console.log(list1.pop())
-// console.log(list1.pop())
-// console.log(list1.pop())
-// console.log(list1.pop())
-// console.log(list1.pop())
+// console.log( list1.unshift("BlYAT") )
+// console.log( list1.unshift("suka") )
+// console.log( list1.unshift("555") )
+// list1.traversePrint();
 
-// console.log(list1);
+// console.log( list1.get(4) ); // <3 
 
-console.log( list1.shift() );
-console.log( list1.shift() );
-console.log( list1.shift() );
-console.log( list1.shift() );
+console.log( list1.set( 0, "butt" ) )
+console.log( list1.set( 1, "butt23" ) )
+console.log( list1.set( 2, "butt13qq" ) )
+console.log( list1.set( 3, "23butt" ) )
+console.log( list1.set( 4, "buttw3" ) )
+console.log( list1.set( 5, "beett" ) )
+
+
+list1.traversePrint(); 
