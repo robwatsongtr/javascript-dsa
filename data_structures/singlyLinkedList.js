@@ -120,7 +120,7 @@ class SinglyLinkedList {
     if( index < 0 || index >= this.length) return null; 
     
     let current = this.head;
-    let counter = 0;
+    let counter = 0; // use zero indexing from head 
 
     while( counter !== index ) {
       current = current.next; 
@@ -138,7 +138,7 @@ class SinglyLinkedList {
 
     /*
     Colt's solution:
-    var foundNode = this.get(index);
+    let foundNode = this.get(index);
     if( foundNode ) {
       foundNode.val = val;
       return true;
@@ -173,6 +173,23 @@ class SinglyLinkedList {
     this.length++;
 
     return true; 
+  }
+
+  remove(index) {
+    // >= this.length becuse length starts at 1 index starts at 0 
+    // also explains for the pop 
+    if( index < 0 || index >= this.length ) return undefined; 
+    if( index === this.length - 1 ) return this.pop(); 
+    if( index === 0 ) return this.shift(); 
+
+    // remove logic: 
+    let previousNode = this.get( index - 1 );
+    let removedNode = previousNode.next; 
+    previousNode.next = removedNode.next; // wire up the previous node to the node after removed
+    this.length--;
+
+    return removedNode; 
+    
   }
 
 
@@ -225,14 +242,14 @@ list1.push("<3");
 
 // list1.traversePrint(); 
 
-console.log( list1.insert( 6, "push") )
+// console.log( list1.insert( 6, "push") )
 
 // console.log( list1.insert( 2, "INSERT") );
 // console.log( list1.insert( -2, "INSERT") ); // false
 // console.log( list1.insert( 8, "INSERT") );  // false 
 // console.log( list1.insert( 0, "unshift") )
 
-
+console.log( list1.remove(5) );
 
 list1.traversePrint();
 
