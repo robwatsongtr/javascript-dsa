@@ -48,8 +48,6 @@ class SinglyLinkedList {
     }
   }
 
-
-  
   // POP removes the node at the END of the list. 
   // 
   // What's tricky about POP on an SLL is that we need to keep 
@@ -140,19 +138,42 @@ class SinglyLinkedList {
 
     /*
     Colt's solution:
-
     var foundNode = this.get(index);
     if( foundNode ) {
       foundNode.val = val;
       return true;
     }
     return false; 
-
     */
 
-    
   }
 
+  insert(index, val) {
+    // make a node 
+    let newNode = new Node(val);
+
+    // basic bounds checking 
+    if( index < 0 || index > this.length) return false; 
+
+    // if we're inserting at the end or beginning, just call push or unshift.
+    if ( index === this.length ) {
+      this.push(val); 
+      return true; 
+    }
+    if( index === 0) {
+      this.unshift(val);
+      return true; 
+    }
+
+    // insert logic: 
+    let previous = this.get( index - 1 ); // get the node previous to insert point
+    let temp = previous.next; // save the connection to the 'old next'
+    previous.next = newNode; // wire up the new node to the previous
+    newNode.next = temp; // wire up the new node to the 'old next'
+    this.length++;
+
+    return true; 
+  }
 
 
 }
@@ -168,7 +189,7 @@ list1.push("<3");
 
 // console.log(list1);
 
-list1.traversePrint();
+// list1.traversePrint();
 
 // console.log(list1.pop())
 // console.log(list1.pop())
@@ -194,12 +215,25 @@ list1.traversePrint();
 
 // console.log( list1.get(4) ); // <3 
 
-console.log( list1.set( 0, "butt" ) )
-console.log( list1.set( 1, "butt23" ) )
-console.log( list1.set( 2, "butt13qq" ) )
-console.log( list1.set( 3, "23butt" ) )
-console.log( list1.set( 4, "buttw3" ) )
-console.log( list1.set( 5, "beett" ) )
+// console.log( list1.set( 0, "butt" ) )
+// console.log( list1.set( 1, "butt23" ) )
+// console.log( list1.set( 2, "butt13qq" ) )
+// console.log( list1.set( 3, "23butt" ) )
+// console.log( list1.set( 4, "buttw3" ) )
+// console.log( list1.set( 5, "beett" ) )
 
 
-list1.traversePrint(); 
+// list1.traversePrint(); 
+
+console.log( list1.insert( 6, "push") )
+
+// console.log( list1.insert( 2, "INSERT") );
+// console.log( list1.insert( -2, "INSERT") ); // false
+// console.log( list1.insert( 8, "INSERT") );  // false 
+// console.log( list1.insert( 0, "unshift") )
+
+
+
+list1.traversePrint();
+
+
