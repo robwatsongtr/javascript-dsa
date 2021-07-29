@@ -189,7 +189,21 @@ class SinglyLinkedList {
     this.length--;
 
     return removedNode; 
-    
+  }
+
+  // Classic interview question. Reverse a linked list in place.
+  // 
+  reverse() {
+    // first store original head in node 
+    let node = this.head; 
+
+    // swap head and tail, in other words the tail is now the head. 
+    this.head = this.tail
+
+    // 
+    this.tail = node; 
+
+
   }
 
 
@@ -249,8 +263,10 @@ list1.push("<3");
 // console.log( list1.insert( 8, "INSERT") );  // false 
 // console.log( list1.insert( 0, "unshift") )
 
-console.log( list1.remove(5) );
+// console.log( list1.remove(5) );
 
 list1.traversePrint();
 
+console.log( list1.reverse() ) ;
 
+list1.traversePrint()
