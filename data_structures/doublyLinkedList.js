@@ -15,6 +15,9 @@ class DoublyLinkedList {
     this.length = 0;
   }
 
-  
+
 
 }
+
+let list = new DoublyLinkedList();
+
