@@ -197,13 +197,23 @@ class SinglyLinkedList {
     // first store original head in node 
     let node = this.head; 
 
-    // swap head and tail, in other words the tail is now the head. 
+    // then swap head and tail, in other words the tail is now the head. 
     this.head = this.tail
 
-    // 
+    // node is head and tail now? 
     this.tail = node; 
 
+    // need tracker variables
+    var next;
+    var prev = null; // make sure end of list is null 
 
+    for( let i = 0; i < this.length; i++ ) {
+      next = node.next; // the next of whatever node we're on is saved in next
+      node.next = prev; 
+      prev = node; 
+      node = next; 
+    }
+    return this; 
   }
 
 
@@ -267,6 +277,6 @@ list1.push("<3");
 
 list1.traversePrint();
 
-console.log( list1.reverse() ) ;
+list1.reverse();
 
 list1.traversePrint()
