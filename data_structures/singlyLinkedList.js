@@ -207,6 +207,7 @@ class SinglyLinkedList {
     var next;
     var prev = null; // make sure end of list is null 
 
+    // the buisness end. swapping. 
     for( let i = 0; i < this.length; i++ ) {
       next = node.next; // the next of whatever node we're on is saved in next
       node.next = prev; 
