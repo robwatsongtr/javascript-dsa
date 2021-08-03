@@ -17,6 +17,7 @@ class DoublyLinkedList {
 
   traversePrint() {
     let currentNode = this.head
+
     while( currentNode ) {
       console.log( currentNode.val );
       currentNode = currentNode.next; 
@@ -25,6 +26,7 @@ class DoublyLinkedList {
 
   traversePrintReverse() {
     let currentNode = this.tail;
+
     while( currentNode ) {
       console.log( currentNode.val );
       currentNode = currentNode.prev; 
@@ -34,6 +36,7 @@ class DoublyLinkedList {
   // Push ADDS a node to the END of the list. 
   push(val) {
     let newNode = new Node(val);
+
     if( !this.head ) {
       this.head = newNode;
       this.tail = this.head;
@@ -42,6 +45,7 @@ class DoublyLinkedList {
       newNode.prev = this.tail; // wire backwards from new node
       this.tail = newNode; // make newNode the tail now. 
     }
+
     this.length++;
     return this;
   }
@@ -86,7 +90,6 @@ class DoublyLinkedList {
 
     this.length--;
     return oldHead; 
-
   }
 
   // Unshift ADDS a node to beginning of DLL. No real advantage to SLL. 
@@ -101,12 +104,26 @@ class DoublyLinkedList {
       newNode.next = this.head; // wire up new Node to head looking 'forward'
       this.head = newNode; // make the newNode the head 
     }
+
     this.length++;
     return this; 
-
   }  
 
+  get(index) {
+    
+  }
 
+  set(index, val) {
+
+  }
+
+  insert(index, val) {
+
+  }
+
+  remove(index) {
+       
+  }
 
   
 }
