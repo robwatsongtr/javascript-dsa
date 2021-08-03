@@ -16,18 +16,18 @@ class DoublyLinkedList {
   }
 
   traversePrint() {
-    let current = this.head
-    while( current ) {
-      console.log( current.val );
-      current = current.next; 
+    let currentNode = this.head
+    while( currentNode ) {
+      console.log( currentNode.val );
+      currentNode = currentNode.next; 
     }
   }
 
   traversePrintReverse() {
-    let current = this.tail;
-    while( current ) {
-      console.log( current.val );
-      current = current.prev; 
+    let currentNode = this.tail;
+    while( currentNode ) {
+      console.log( currentNode.val );
+      currentNode = currentNode.prev; 
     }
   }
 
