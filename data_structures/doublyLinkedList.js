@@ -23,6 +23,14 @@ class DoublyLinkedList {
     }
   }
 
+  traversePrintReverse() {
+    let current = this.tail;
+    while( current ) {
+      console.log( current.val );
+      current = current.prev; 
+    }
+  }
+
   // Push ADDS a node to the END of the list. 
   push(val) {
     let newNode = new Node(val);
@@ -98,6 +106,8 @@ class DoublyLinkedList {
 
   }  
 
+
+
   
 }
 
@@ -110,6 +120,7 @@ list.push('333rad');
 list.push("beastie334343")
 
 list.traversePrint();
+list.traversePrintReverse();
 
 
 // console.log( list.pop() );
