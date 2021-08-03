@@ -109,12 +109,45 @@ class DoublyLinkedList {
     return this; 
   }  
 
+  // GET retrieves a value at a node indexed in from the head. 0 indexing in this case.
+  //
+  // Doubly Linked list allows for an optimization based upon being able to work
+  // bakwards from the tail. The index/node will be found from head if closer to head,
+  // or tail, if closer to tail.
   get(index) {
-    
+    // bounds checking 
+    if( index < 0 || index >= this.length ) return null;
+
+    // if the index is less than or equal to list/2 start searching from head
+    // otherwise start searching from tail 
+    if( index <= (this.length/2) )  {
+
+      let counter = 0; 
+      let current = this.head;
+
+      while( counter !== index ) { 
+        current = current.next; 
+        counter++;
+      }
+      return current; 
+
+    } else {
+
+      let current = this.tail;
+      let counter = this.length - 1; 
+
+      while( counter !== index ) {
+        current = current.prev; 
+        counter--; 
+      }
+      return current; 
+
+    }
   }
 
+  // Set: replacing a value of a node, 0 indexed.
   set(index, val) {
-
+    
   }
 
   insert(index, val) {
@@ -133,11 +166,15 @@ let list = new DoublyLinkedList();
 list.push(99);
 list.push("Fred Durst");
 list.push(":(");
-list.push('333rad');
+list.push(3232);
 list.push("beastie334343")
+list.push("300")
+list.push("400")
+list.push(500.4);
 
-list.traversePrint();
-list.traversePrintReverse();
+
+// list.traversePrint();
+// list.traversePrintReverse();
 
 
 // console.log( list.pop() );
@@ -161,6 +198,14 @@ list.traversePrintReverse();
 // console.log( list.unshift("beastie boys23") );
 // console.log( list.unshift("beastie boys2323") );
 
-// list.traversePrint();
+list.traversePrint();
+
+console.log( list.get(1) );
+
+console.log( list.get(4) );
+
+console.log( list.get(6) );
+
+
 
 
