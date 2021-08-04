@@ -157,10 +157,12 @@ class SinglyLinkedList {
 
     // if we're inserting at the end or beginning, just call push or unshift.
     if ( index === this.length ) {
+      console.log("push triggered")
       this.push(val); 
       return true; 
     }
     if( index === 0) {
+      console.log("unshift triggered")
       this.unshift(val);
       return true; 
     }
@@ -168,8 +170,10 @@ class SinglyLinkedList {
     // insert logic: 
     let previous = this.get( index - 1 ); // get the node previous to insert point
     let temp = previous.next; // save the connection to the 'old next'
+
     previous.next = newNode; // wire up the new node to the previous
     newNode.next = temp; // wire up the new node to the 'old next'
+
     this.length++;
 
     return true; 
@@ -231,7 +235,7 @@ list1.push("<3");
 
 // console.log(list1);
 
-// list1.traversePrint();
+list1.traversePrint();
 
 // console.log(list1.pop())
 // console.log(list1.pop())
@@ -267,7 +271,7 @@ list1.push("<3");
 
 // list1.traversePrint(); 
 
-// console.log( list1.insert( 6, "push") )
+console.log( list1.insert( 4, "4") )
 
 // console.log( list1.insert( 2, "INSERT") );
 // console.log( list1.insert( -2, "INSERT") ); // false
@@ -276,8 +280,8 @@ list1.push("<3");
 
 // console.log( list1.remove(5) );
 
-list1.traversePrint();
+// list1.traversePrint();
 
-list1.reverse();
+// list1.reverse();
 
 list1.traversePrint()

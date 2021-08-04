@@ -71,7 +71,7 @@ class DoublyLinkedList {
     return poppedNode; 
   }
 
-  // Shift REMOVES node from beginning of a list. No real advantage to SLL.
+  // Shift REMOVES node from beginning of a list. No real time advantage to SLL.
   shift() {
     if( this.length === 0 ) return undefined;
 
@@ -92,7 +92,7 @@ class DoublyLinkedList {
     return oldHead; 
   }
 
-  // Unshift ADDS a node to beginning of DLL. No real advantage to SLL. 
+  // Unshift ADDS a node to beginning of DLL. No real time advantage to SLL. 
   unshift(val) {
     let newNode = new Node(val);
 
@@ -145,13 +145,45 @@ class DoublyLinkedList {
     }
   }
 
-  // Set: replacing a value of a node, 0 indexed.
+  // Set: replacing a value of a node, 0 indexed. Same as SLL basically if get logic
+  // is used so we can search for index from beginning or end. 
   set(index, val) {
-    
+    let foundNode = this.get(index);
+    if( foundNode === null ) return false;
+    foundNode.val = val; 
+    return true; 
   }
 
+  // Insert: insert a node at an index, zero indexed. Get logic is used
+  // so that we can search for the index form beginning or end
   insert(index, val) {
+    let newNode = new Node(val); 
 
+    if( index < 0 || index >= this.length ) return false;
+
+    if( index === 0 ) {
+      console.log("unshift triggered")
+      this.unshift(val);
+      return true;
+    }
+    if( index === this.length ) {
+      console.log('push triggered');
+      this.push(val);
+      return true;
+    }
+
+    let beforeNode = this.get( index - 1 );
+    let afterNode = beforeNode.next; // save to be wired up after new node
+
+    beforeNode.next = newNode; // wire up new node to previous node
+    newNode.prev = beforeNode; // same here just other direction 
+
+    newNode.next = afterNode; // wire up new node to the after node
+    afterNode.previous = newNode; // same here just other direction 
+
+    this.length++; 
+
+    return true;  
   }
 
   remove(index) {
@@ -163,19 +195,18 @@ class DoublyLinkedList {
 
 let list = new DoublyLinkedList();
 
+// make the list 5 items long
 list.push(99);
 list.push("Fred Durst");
 list.push(":(");
 list.push(3232);
 list.push("beastie334343")
-list.push("300")
-list.push("400")
-list.push(500.4);
 
 
-// list.traversePrint();
+
+list.traversePrint();
+
 // list.traversePrintReverse();
-
 
 // console.log( list.pop() );
 // console.log( list.pop() );
@@ -198,14 +229,21 @@ list.push(500.4);
 // console.log( list.unshift("beastie boys23") );
 // console.log( list.unshift("beastie boys2323") );
 
+// list.traversePrint();
+
+// console.log( list.get(1) );
+// console.log( list.get(4) );
+// console.log( list.get(6) );
+
+// console.log( list.set(0, "zero") );
+// console.log( list.set(2, ":)" ) );
+// console.log( list.set(-9, "yay") );
+
+// list.traversePrint();
+
+// console.log( list.insert(0, "unshift triggered") ) // works 
+console.log( list.insert(5, "push triggered") )
+
+
 list.traversePrint();
-
-console.log( list.get(1) );
-
-console.log( list.get(4) );
-
-console.log( list.get(6) );
-
-
-
 
