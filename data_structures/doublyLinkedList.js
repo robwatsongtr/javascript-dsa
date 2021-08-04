@@ -186,8 +186,30 @@ class DoublyLinkedList {
     return true;  
   }
 
+  // Remove item at indexed position 
   remove(index) {
-       
+    if( index < 0 || index >= this.length ) return undefined; 
+    if( index === this.length - 1 ) return this.pop(); 
+    if( index === 0 ) return this.shift(); 
+
+    let removedNode = this.get(index);
+
+    // Not going to use a separate variable for the 'after node": 
+    // 
+    // Wire up node before removed node to node after removed node 
+    removedNode.prev.next = removedNode.next; 
+
+    // wire up node after removed node back to node before removed node
+    removedNode.next.prev = removedNode.prev;
+
+    // clean up the removed node
+    removedNode.next = null;
+    removedNode.prev = null; 
+
+    this.length--;
+
+    return removedNode; 
+ 
   }
 
   
@@ -204,7 +226,7 @@ list.push("beastie334343")
 
 
 
-list.traversePrint();
+// list.traversePrint();
 
 // list.traversePrintReverse();
 
@@ -242,8 +264,13 @@ list.traversePrint();
 // list.traversePrint();
 
 // console.log( list.insert(0, "unshift triggered") ) // works 
-console.log( list.insert(5, "push triggered") )
+// console.log( list.insert(5, "push triggered") )
 
 
 list.traversePrint();
 
+console.log( list.remove(5) );
+
+
+
+list.traversePrint();
