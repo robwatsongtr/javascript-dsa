@@ -24,8 +24,18 @@ How are heaps represented? Often flattened in an array, with the
 root being the first sub, then BFS across the first level, 
 BFS across 2nd level, etc:
 
-        
-      
+Binary Heap is modeled in an array, essentally. 
 
+The mathematical relationship between the parent and child nodes:
+
+For any index of an array n:
+  The left child is stored at index 2n + 1
+  the right child is at index 2n + 2       
+      
+For any child node at index n:
+  Its parent is at index ( ( n-1 ) / 2 )floor 
+   
 
 */
+
+
