@@ -159,7 +159,7 @@ class DoublyLinkedList {
   insert(index, val) {
     let newNode = new Node(val); 
 
-    if( index < 0 || index >= this.length ) return false;
+    if( index < 0 || index > this.length ) return false;
 
     if( index === 0 ) {
       console.log("unshift triggered")
@@ -226,7 +226,7 @@ list.push("beastie334343")
 
 
 
-// list.traversePrint();
+list.traversePrint();
 
 // list.traversePrintReverse();
 
@@ -261,16 +261,16 @@ list.push("beastie334343")
 // console.log( list.set(2, ":)" ) );
 // console.log( list.set(-9, "yay") );
 
-// list.traversePrint();
+//list.traversePrint();
 
 // console.log( list.insert(0, "unshift triggered") ) // works 
-// console.log( list.insert(5, "push triggered") )
+console.log( list.insert(5, "5") )
 
 
 list.traversePrint();
 
-console.log( list.remove(5) );
+// console.log( list.remove(5) );
 
 
 
-list.traversePrint();
+// list.traversePrint();

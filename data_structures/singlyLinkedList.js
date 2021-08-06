@@ -221,6 +221,24 @@ class SinglyLinkedList {
     return this; 
   }
 
+  reverseRobert() {
+    let newTail = this.head // the new tail will be the old head
+    let node = this.head // node is our worker node starts at old head
+    let next = node.next // next is one after node 
+
+    while (next !== null) {
+      let current = next.next // current two away from node 
+      next.next = node // move next to before node
+      node = next // node is moved down by one node
+      next = current // move next down by one node 
+      // repeat 
+    }
+
+    newTail.next = null; // make sure tail's next is null
+    this.head = node // where node is is now the head
+    this.tail = newTail // where new tail is is now the tail 
+  }
+
 
 }
 
