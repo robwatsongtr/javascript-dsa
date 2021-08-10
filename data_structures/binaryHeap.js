@@ -43,6 +43,30 @@ class MaxBinaryHeap {
     this.values = []
   }
 
+  bubbleUp() {
+    let index = this.values.length - 1;
+    const element = this.values[idx];
+
+    while( index > 0 ) {
+      let parentIdx = Math.floor( (index-1) / 2);
+      let parent = this.values[parentIdx]; 
+
+      if( element <= parent ) break; // the vaule has found its final position 
+
+      // otherwise, swap
+      this.values[parentIdx] = element; 
+      this.values[idx] = parent; 
+
+      // and update index to be parent
+      idx = parentIdx;
   
+    }
+
+  }
+
+  insert(element) {
+    this.values.push(element); // push to end of array
+    this.bubbleUp(); // finds the right place for the value. 
+  }
 
 }
