@@ -47,6 +47,7 @@ class MaxBinaryHeap {
     let index = this.values.length - 1;
     const element = this.values[idx];
 
+    // while conditional necessary so that we don't go to negative indicies;
     while( index > 0 ) {
       let parentIdx = Math.floor( (index-1) / 2);
       let parent = this.values[parentIdx]; 
