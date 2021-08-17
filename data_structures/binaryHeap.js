@@ -44,35 +44,37 @@ Search: O(n) ->  because no implied order along siblings
 
 class MaxBinaryHeap {
   constructor(value) {
-    this.array = []
+    this.values = []
   }
 
 
   // Insert an element, will result in a proper binary heap and the element
   // finding its right place 
   insert(element) {
-    this.array.push(element); // push to end of array
+    this.values.push(element); // push to end of array
     this.bubbleUp(); // finds the right place for the value. 
   }
   
   // helper method for insert: 
   bubbleUp() {
-    let idx = this.array.length - 1; // find index of the end of the array
-    const element = this.array[idx]; // set element to that index 
+    let idx = this.values.length - 1; // find index of the end of the array
+    const element = this.values[idx]; // set element to that index of end of array 
 
     // while condition necessary so that we don't go to negative indicies
     while( idx > 0 ) {
+
       let parentIdx = Math.floor( (idx-1) / 2); // calculation to find parent
-      let parent = this.array[parentIdx]; // the current parent in the array 
+      let parent = this.values[parentIdx]; // the current parent in the array 
 
       if( element <= parent ) break; // the vaule has found its final position 
 
       // otherwise, swap
-      this.array[parentIdx] = element; // swap element to parent 
-      this.array[idx] = parent; // swap parent to element 
+      this.values[parentIdx] = element; // swap element to parent 
+      this.values[idx] = parent; // swap parent to element 
 
       // and then update index to be parent
       idx = parentIdx;
+
     }
 
   }
@@ -88,6 +90,19 @@ class MaxBinaryHeap {
   //   next largest element as the root 
   extractMax() {
 
+    let returnedItem = this.values[0]; // store old root to pop
+    this.values[0] = this.values[this.values.length - 1 ] // swap first and last in arr
+    
+    let idx = this.values[0]; // start index at beginning of array
+    let element = idx; // set the moving element to the first item in array
+
+    while( idx < this.values.length ) {
+      
+      
+    }
+
+
+ 
   }
 
 }
