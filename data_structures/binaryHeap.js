@@ -55,7 +55,7 @@ class MaxBinaryHeap {
     this.bubbleUp(); // finds the right place for the value. 
   }
   
-  // helper method for insert: 
+  // helper method for insert()
   bubbleUp() {
     let idx = this.values.length - 1; // find index of the end of the array
     const element = this.values[idx]; // set element to that index of end of array 
@@ -89,20 +89,25 @@ class MaxBinaryHeap {
   // - You now have the heap configured to be correct again with the 
   //   next largest element as the root 
   extractMax() {
-
-    let returnedItem = this.values[0]; // store old root to pop
-    this.values[0] = this.values[this.values.length - 1 ] // swap first and last in arr
+    const max = this.values[0]; // store the max to return 
+    const end = this.values.pop(); // pop off the end
+    this.values[0] = end; // swap end with root. now its time to sink it down.. 
     
-    let idx = this.values[0]; // start index at beginning of array
-    let element = idx; // set the moving element to the first item in array
+    this.sinkDown(); // sink it down!
+
+    return max;
+ 
+  }
+
+  // helper method for extractMax()
+  sinkDown() {
+    let idx = 0; 
+    let element = this.values[idx];
 
     while( idx < this.values.length ) {
-      
-      
+    
     }
 
-
- 
   }
 
 }
