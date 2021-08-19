@@ -89,11 +89,16 @@ class MaxBinaryHeap {
   // - You now have the heap configured to be correct again with the 
   //   next largest element as the root 
   extractMax() {
+
     const max = this.values[0]; // store the max to return 
     const end = this.values.pop(); // pop off the end
-    this.values[0] = end; // swap end with root. now its time to sink it down.. 
-    
-    this.sinkDown(); // sink it down!
+
+    // need to encase in an if because given the logic when you get to the last
+    // element in the heap it will pop off and re-add itself and pop off and re-add.. 
+    if( this.values.length > 0) {
+      this.values[0] = end; // swap end with root. now its time to sink it down.. 
+      this.sinkDown(); // sink it down!
+    }
 
     return max;
  
@@ -101,11 +106,55 @@ class MaxBinaryHeap {
 
   // helper method for extractMax()
   sinkDown() {
-    let idx = 0; 
-    let element = this.values[idx];
 
-    while( idx < this.values.length ) {
+    let idx = 0; 
+    const length = this.values.length;
+    const element = this.values[0];
+
+    while( true ) {
+
+      let leftChildIndex = (2 * idx) + 1;
+      let rightChildIndex = (2 * idx) + 2;
+
+      let leftChild, rightChild; 
+
+      let swap = null; 
     
+      // check if computed index in bounds on the left size
+      if( leftChildIndex < length ) {
+
+        // if so, set the left child to the value at that index 
+        leftChild = this.values[leftChildIdx];
+
+         // check if left child value is greater, if so store in temp swap variable
+        if( leftChild > element ) {
+          swap = leftChildIdx; 
+        }
+      }
+
+      // check if computed index in bounds on the right size
+      if( rightChildIndex < length ) {
+
+        // if so, set the left child to the value at that index 
+        rightChild = this.values[rightChildIndex];
+
+        // logic more complicated, need to check if its the right we really
+        // want to swap with as oppposed to the left (ie right is larger)
+        if( 
+            ( swap === null && rightChild > element ) ||
+            ( swap !== null && rightChild > leftchild )
+          ) {
+            swap = rightChildIndex; 
+          }
+      }
+
+      if( swap === null ) break; // we're done if its still null 
+
+      // now do the swap and update things 
+      this.values[idx] = this.values[swap];
+      this.values[swap] = element; 
+      idx = swap; 
+      
     }
 
   }
