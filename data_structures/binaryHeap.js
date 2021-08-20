@@ -154,8 +154,10 @@ class MaxBinaryHeap {
       this.values[idx] = this.values[swap];
       this.values[swap] = element; 
       idx = swap; 
-      
+
     }
+
+    // Priority Queue
 
   }
 
