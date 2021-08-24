@@ -8,6 +8,7 @@ All heaps are as compact as possible: All the children of each node
 are as full as they can be and left children are filled out first.
 
 --MaxBinaryHeap:
+
 *Each parent node has at most two child nodes. 
 ***The value of each PARENT node is a always GREATER than its child nodes. 
 *There are no guarantees between sibling nodes. 
@@ -15,6 +16,7 @@ are as full as they can be and left children are filled out first.
 
 
 --MinBinaryHeap:
+
 *Each parent node has at most two child nodes. 
 ***The value of each CHILD node is always GREATER than its parent nodes. 
 *There are no guarantees between sibling nodes. 
@@ -24,7 +26,10 @@ How are heaps represented? Often flattened in an array, with the
 root being the first sub, then BFS across the first level, 
 BFS across 2nd level, etc. 
 
-Binary Heap is modeled in an array, essentally. 
+
+---
+
+Binary Heap is typcally modeled in an array. 
 
 The mathematical relationship between the parent and child nodes:
 
@@ -107,60 +112,73 @@ class MaxBinaryHeap {
   // helper method for extractMax()
   sinkDown() {
 
-    let idx = 0; 
-    const length = this.values.length;
-    const element = this.values[0];
+    let idx = 0; // will update as swap progresses down heap 
+    const length = this.values.length; // code shortener
+    const element = this.values[0]; // the value being sunk down, starts at root
 
     while( true ) {
+      // these variables will be used to compute the next children ongoing
+      // in the loop 
+      let leftChildIdx = (2 * idx) + 1;
+      let rightChildIdx = (2 * idx) + 2;
 
-      let leftChildIndex = (2 * idx) + 1;
-      let rightChildIndex = (2 * idx) + 2;
-
+      // this will contain the values at those indicies 
       let leftChild, rightChild; 
-
+      
+      // will keep track of if we did any swaps. This will allow a break
+      // out of the loop if the swaps stop; the value has sunk to its final place. 
       let swap = null; 
     
-      // check if computed index in bounds on the left size
-      if( leftChildIndex < length ) {
+      // LEFT value check. 
+      // if computed index in bounds on the left size
+      if( leftChildIdx < length ) {
 
         // if so, set the left child to the value at that index 
         leftChild = this.values[leftChildIdx];
 
-         // check if left child value is greater, if so store in temp swap variable
+         // check if left child value is greater than element
+         // if so store in temp swap variable to check against rt child
         if( leftChild > element ) {
           swap = leftChildIdx; 
         }
       }
 
+      // RIGHT value check. 
       // check if computed index in bounds on the right size
-      if( rightChildIndex < length ) {
+      if( rightChildIdx < length ) {
 
         // if so, set the left child to the value at that index 
-        rightChild = this.values[rightChildIndex];
+        rightChild = this.values[rightChildIdx];
 
         // logic more complicated, need to check if its the right we really
         // want to swap with as oppposed to the left (ie right is larger)
+        //
+        // What the condition says: if no swap yet and right child is greater than
+        // element is true OR 
+        // we have swapped and the right child is greater than
+        // the left child, then truly the right child is greater than the left child
+        // and we will swap with the right child. Since we are logical ORing one OR the other 
+        // has to be true.
         if( 
             ( swap === null && rightChild > element ) ||
-            ( swap !== null && rightChild > leftchild )
+            ( swap !== null && rightChild > leftChild )
           ) {
-            swap = rightChildIndex; 
+            swap = rightChildIdx; 
           }
       }
 
       if( swap === null ) break; // we're done if its still null 
 
-      // now do the swap and update things 
+      // now do the swap 
       this.values[idx] = this.values[swap];
       this.values[swap] = element; 
+      
+      // update the index, and continnue along in the loop...
       idx = swap; 
 
     }
 
-    // Priority Queue
-
   }
-
 }
 
 let heap = new MaxBinaryHeap()
@@ -185,3 +203,12 @@ Result heap:
     18  27  12  33
 
 */
+
+console.log( heap.extractMax() ); // 55
+console.log( heap.extractMax() ); // 41
+console.log( heap.extractMax() ); // 39
+console.log( heap.extractMax() ); // 33
+console.log( heap.extractMax() ); // 27
+console.log( heap.extractMax() ); // 18
+console.log( heap.extractMax() ); // 12, last value 
+console.log( heap.extractMax() ); // undefined, heap is empty
