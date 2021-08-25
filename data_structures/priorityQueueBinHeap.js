@@ -36,14 +36,35 @@ class PriorityQueue {
   //   accepts a value and a priority, 
   //   makes a new node, and puts it in the right spot 
   //   based off its priority (min binary heap)
-  enqueue(val) {
-    let newNode = new Node(val);
-    this.values.push(newNode);
-    this.bubbleUp();
+  enqueue(val, priority) {
+    let newNode = new Node(val, priority); // make a new node
+    this.values.push(newNode); // push it to end of the values array
+    this.bubbleUp(); // bubble it up to its final resting place in the heap
   }
 
   // helper method for enqueue
   bubbleUp() {
+    let idx = this.values.length - 1; // initialize idx variable to the end of the array
+    const nodeToPlace = this.values[idx]; // nodeToPlace set to that index ^^
+
+    // loop through the array until we hit the root
+    while( idx > 0 ) {
+
+      let parentIdx = Math.floor( (idx-1) / 2 ); // calculation to find parent index
+      let parent = this.values[parentIdx]; // the current parent we're looking at
+
+      // has node found its resting position? if so we're done
+      if( nodeToPlace.priority >= parent.priority ) break;
+
+      //otherwise, swap
+      this.values[parentIdx] = nodeToPlace;
+      this.values[idx] = parent; 
+
+      // update the index to be the parent index, and carry on...
+      idx = parentIdx; 
+
+    }
+
 
   }
 
@@ -51,7 +72,13 @@ class PriorityQueue {
   //   removes the root element, returns it, and 
   //   rearranges the heap based on priority. (min binary heap)
   dequeue() {
+    const minNode = this.values[0]; // store minimum priority node to continue
+    const endNode = this.values.pop(); // store the end (max) node to sink down
 
+    if( this.values.length > 0 ) {
+      this.values[0] = endNode; 
+      this.sinkDown()
+    }
   }
 
   // helper method for dequeue

@@ -96,7 +96,7 @@ class MaxBinaryHeap {
   extractMax() {
 
     const max = this.values[0]; // store the max to return 
-    const end = this.values.pop(); // pop off the end
+    const end = this.values.pop(); // store the min to sink down 
 
     // need to encase in an if because given the logic when you get to the last
     // element in the heap it will pop off and re-add itself and pop off and re-add.. 
