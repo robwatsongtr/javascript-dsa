@@ -32,10 +32,18 @@ class PriorityQueue {
     this.values = []
   }
 
-  enqueue() {
+  // enqueue 
+  //  accepts a value and a priority, 
+  //  makes a new node, and puts it in the right spot 
+  //  based off its priority (min binary heap)
+  enqueue(val) {
+    let newNode = new Node(val);
 
   }
 
+  // dequeue 
+  //   removes the root element, returns it, and 
+  //   rearranges the heap based on priority. (min binary heap)
   dequeue() {
 
   }
