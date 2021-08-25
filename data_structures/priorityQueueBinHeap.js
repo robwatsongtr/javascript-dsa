@@ -2,7 +2,7 @@
 
 --Priority Queue: Common use case for a Binary Heap
 
-A priority queue is a data structure where _each element has a priority_.
+A priority queue is a data structure where each element has a priority.
 Elements with higher priorities are served before elements with lower priorites.
 
 We have a collection of data and each element is assigned a priority.
@@ -33,11 +33,17 @@ class PriorityQueue {
   }
 
   // enqueue 
-  //  accepts a value and a priority, 
-  //  makes a new node, and puts it in the right spot 
-  //  based off its priority (min binary heap)
+  //   accepts a value and a priority, 
+  //   makes a new node, and puts it in the right spot 
+  //   based off its priority (min binary heap)
   enqueue(val) {
     let newNode = new Node(val);
+    this.values.push(newNode);
+    this.bubbleUp();
+  }
+
+  // helper method for enqueue
+  bubbleUp() {
 
   }
 
@@ -46,6 +52,11 @@ class PriorityQueue {
   //   rearranges the heap based on priority. (min binary heap)
   dequeue() {
 
+  }
+
+  // helper method for dequeue
+  sinkDown() {
+    
   }
 
 
