@@ -116,6 +116,7 @@ class MaxBinaryHeap {
     const length = this.values.length; // code shortener
     const element = this.values[0]; // the value being sunk down, starts at root
 
+    
     while( true ) {
       // these variables will be used to compute the next children ongoing
       // in the loop 
@@ -179,6 +180,7 @@ class MaxBinaryHeap {
     }
 
   }
+  
 }
 
 let heap = new MaxBinaryHeap()

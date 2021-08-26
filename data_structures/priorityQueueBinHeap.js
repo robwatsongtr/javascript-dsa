@@ -32,22 +32,24 @@ class PriorityQueue {
     this.values = []
   }
 
-  // enqueue 
-  //   accepts a value and a priority, 
-  //   makes a new node, and puts it in the right spot 
-  //   based off its priority (min binary heap)
+  // enqueue with bubble up helper func 
+  //  accepts a value and a priority, 
+  //  makes a new node, and puts it in the right spot 
+  //  based off its priority (min binary heap)
   enqueue(val, priority) {
+
     let newNode = new Node(val, priority); // make a new node
     this.values.push(newNode); // push it to end of the values array
     this.bubbleUp(); // bubble it up to its final resting place in the heap
+
   }
 
-  // helper method for enqueue
   bubbleUp() {
+    
     let idx = this.values.length - 1; // initialize idx variable to the end of the array
     const nodeToPlace = this.values[idx]; // nodeToPlace set to that index ^^
 
-    // loop through the array until we hit the root
+    // while condition necessary so that we don't go to negative indicies
     while( idx > 0 ) {
 
       let parentIdx = Math.floor( (idx-1) / 2 ); // calculation to find parent index
@@ -65,26 +67,86 @@ class PriorityQueue {
 
     }
 
-
   }
 
-  // dequeue 
-  //   removes the root element, returns it, and 
-  //   rearranges the heap based on priority. (min binary heap)
+  // dequeue with sinkdown helper func
+  //  removes the root element, returns it, and 
+  //  rearranges the heap based on priority. (min binary heap)
   dequeue() {
-    const minNode = this.values[0]; // store minimum priority node to continue
-    const endNode = this.values.pop(); // store the end (max) node to sink down
+
+    const minNode = this.values[0]; // store minimum priority node to return
+    const endNode = this.values.pop(); // store the end (max) node to eventually sink down
 
     if( this.values.length > 0 ) {
-      this.values[0] = endNode; 
-      this.sinkDown()
+      this.values[0] = endNode; // stick the max at the beginning / root
+      this.sinkDown(); // sink it down to its final resting place
     }
+
   }
 
-  // helper method for dequeue
   sinkDown() {
+
+    let idx = 0; // will update as swap progresses down heap
+    const length = this.values.length;  // code shortener 
+    const nodeToPlace = this.values[0]; // the node being sunk down, starts at root
+
+    while( true ) {
+
+      // compute the next children, ongoing, in the loop....
+      let leftChildIdx = (2 * idx) + 1; 
+      let rightChildIdx = (2 * idx) + 2; 
+
+      // prepare the variables to hold the nodes at those indicies...
+      let leftChildNode, rightChildNode; 
+
+      // will keep track of if we did any swaps. This will allow a break
+      // out of the loop if the swaps stop; the value has sunk to its final place. 
+      let swap = null; 
+
+      // ------Left value check.
+      // if computed index is in bounds on the left side...
+      if( leftChildIdx < length ) {
+
+        // set the left child node to the value at that index
+        leftChildNode = this.values[leftChildIdx];
+
+        // if the left child node priority is less than the nodeToPlace
+        // store in temp swap var to check against right child
+        if( leftChildNode.prority < nodeToPlace.priority ) {
+          swap = leftChildIdx;
+        }
+
+      }
+
+      // -------Right value check.
+      // if computed index is in bounds on the right side...
+      if( rightChildIdx < length ) {
+
+        // if so, set the left child to the value at that index 
+        rightChildNode = this.values[rightChildIdx];
+
+        // logic more complicated, need to check if its the right we really
+        // want to swap with as oppposed to the left (ie right is larger)
+        if( 
+          ( swap === null && rightChildNode.priority < nodeToPlace.priority ) ||
+          ( swap !== null && rightChildNode.priority < leftChildNode.priority )
+        ) {
+          swap = rightChildIdx; 
+        }
+       
+      }
+
+      if( swap === null ) break; // break out of loop if still null here cuz we're done
+
+      // do the swap
+      this.values[idx] = this.values[swap]; 
+      this.values[swap] = nodeToPlace; 
+
+      // update the index, and continue on in the loop
+      idx = swap; 
+
+    }
     
   }
-
 
 }
