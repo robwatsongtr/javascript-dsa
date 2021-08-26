@@ -114,7 +114,7 @@ class PriorityQueue {
 
         // if the left child node priority is less than the nodeToPlace
         // store in temp swap var to check against right child
-        if( leftChildNode.prority < nodeToPlace.priority ) {
+        if( leftChildNode.priority < nodeToPlace.priority ) {
           swap = leftChildIdx;
         }
 
@@ -155,10 +155,12 @@ class PriorityQueue {
 
 let ER = new PriorityQueue()
 
+ER.enqueue('broken arm', 2)
+ER.enqueue('high fever', 4)
 ER.enqueue('common cold', 5)
 ER.enqueue('gunshot wound', 1)
-ER.enqueue('high fever', 4)
-ER.enqueue('broken arm', 2)
+ER.enqueue('glass in eye', 3)
+
 
 
 console.log(ER);
@@ -167,5 +169,8 @@ console.log( ER.dequeue() );
 console.log( ER.dequeue() );
 console.log( ER.dequeue() );
 console.log( ER.dequeue() );
+console.log( ER.dequeue() );
+console.log( ER.dequeue() );
+
 
 
