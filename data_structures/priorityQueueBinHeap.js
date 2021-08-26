@@ -82,6 +82,7 @@ class PriorityQueue {
       this.values[0] = endNode; // stick the max at the beginning / root
       this.sinkDown(); // sink it down to its final resting place
     }
+    return minNode; 
 
   }
 
@@ -151,3 +152,20 @@ class PriorityQueue {
   }
 
 }
+
+let ER = new PriorityQueue()
+
+ER.enqueue('common cold', 5)
+ER.enqueue('gunshot wound', 1)
+ER.enqueue('high fever', 4)
+ER.enqueue('broken arm', 2)
+
+
+console.log(ER);
+
+console.log( ER.dequeue() );
+console.log( ER.dequeue() );
+console.log( ER.dequeue() );
+console.log( ER.dequeue() );
+
+
