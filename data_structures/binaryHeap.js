@@ -130,7 +130,7 @@ class MaxBinaryHeap {
       // out of the loop if the swaps stop; the value has sunk to its final place. 
       let swap = null; 
     
-      // LEFT value check. 
+      // -----LEFT value check. 
       // if computed index in bounds on the left size
       if( leftChildIdx < length ) {
 
@@ -144,7 +144,7 @@ class MaxBinaryHeap {
         }
       }
 
-      // RIGHT value check. 
+      // -----RIGHT value check. 
       // check if computed index in bounds on the right size
       if( rightChildIdx < length ) {
 
@@ -180,7 +180,7 @@ class MaxBinaryHeap {
     }
 
   }
-  
+
 }
 
 let heap = new MaxBinaryHeap()
