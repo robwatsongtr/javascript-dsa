@@ -17,6 +17,8 @@ What makes a good hash?
 2. Doesn't cluster outputs at specific indicies, but distributes uniformly.
 3. Deterministic, ie same input yields same output.
 
-
+A main way of preventing collisions is to use prime numbers, in that if the size
+of your table / array is a prime number collisions are greatly reduced, by orders
+of magnitude.
 
 */
