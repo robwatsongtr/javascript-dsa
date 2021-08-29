@@ -128,7 +128,7 @@ class PriorityQueue {
         rightChildNode = this.values[rightChildIdx];
 
         // logic more complicated, need to check if its the right we really
-        // want to swap with as oppposed to the left (ie right is larger)
+        // want to swap with as oppposed to the left (ie right is smaller)
         if( 
           ( swap === null && rightChildNode.priority < nodeToPlace.priority ) ||
           ( swap !== null && rightChildNode.priority < leftChildNode.priority )
