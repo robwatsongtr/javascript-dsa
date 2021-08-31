@@ -21,22 +21,24 @@ A main way of preventing collisions is to use prime numbers, in that if the size
 of your table / array is a prime number collisions are greatly reduced, by orders
 of magnitude.
 
---Handling collisions--:
+Handling collisions::
 
-Separate chaining:
+1. Separate chaining:
 
 In this method, a collision causes a nested datastrucutre to be created, so if two 
 items are to be stored at index 4 of an array,the first item is stored there,
 then the second item is also stored there as an array at that array index, and to 
 retrieve the get func would loop at that index to find the correct value.
 
-Linear probing:
+2. Linear probing:
 
 When there is a collision we search through the array to find the next empty.
 Downside is that you can fill up slots in the table quickly, then you have to 
 figure out how to deal with that situation. 
 
 */
+
+//-------------------------------------------------------------------------------
 
 // basic hash function using strings:
 
@@ -51,3 +53,31 @@ figure out how to deal with that situation.
 
 // then you can take that total and MODULO by the LENGTH of the array 
 // and voila, you have a basic hash function for strings. 
+
+// here's an example of a simple hash function for strings: 
+
+function simpleHash(key, arrLen) {
+  let total = 0;
+  let hash; 
+
+  for( let char of key ) {
+
+    // map 'a' to 1, 'b' to 2, 'c' to 3, etc
+    let value = char.charCodeAt(0) - 96;
+
+    // keep a running total of the char code value modulo'ed by array length 
+    total = ( total + value ) % arrLen; 
+
+  }
+
+  hash = total; 
+
+  return hash; 
+
+}
+
+console.log( simpleHash("blue", 10) );
+console.log( simpleHash("green", 10) );
+console.log( simpleHash("sdifjdfsd", 10) );
+console.log( simpleHash("12dfbsd", 10) );
+console.log( simpleHash("mohagan", 10) );
