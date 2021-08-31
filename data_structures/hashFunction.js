@@ -38,3 +38,16 @@ figure out how to deal with that situation.
 
 */
 
+// basic hash function using strings:
+
+// eg: 
+// hash("pink", 100) -> this will map the string 'pink' to be a number 
+// between zero and 100.
+
+// a decent way to do this is to use the underlying UTF character code
+// for each character in the string. If you subtract 96 from the char
+// code you get the position in the alphabet. We can take each character's
+// numeric position and add them together. 
+
+// then you can take that total and MODULO by the LENGTH of the array 
+// and voila, you have a basic hash function for strings. 
