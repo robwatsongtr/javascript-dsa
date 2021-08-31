@@ -60,7 +60,9 @@ function simpleHash(key, arrLen) {
   let total = 0;
   let hash; 
 
-  for( let char of key ) {
+  // In for condition, limit length of string looked at so that  
+  // func doesn't become linear.
+  for( let i = 0; i < Math.min( key.length, 100 ); i++ ) {
 
     // map 'a' to 1, 'b' to 2, 'c' to 3, etc
     let value = char.charCodeAt(0) - 96;
@@ -76,8 +78,8 @@ function simpleHash(key, arrLen) {
 
 }
 
-console.log( simpleHash("blue", 10) );
-console.log( simpleHash("green", 10) );
-console.log( simpleHash("sdifjdfsd", 10) );
-console.log( simpleHash("12dfbsd", 10) );
-console.log( simpleHash("mohagan", 10) );
+console.log( simpleHash("blue", 11) );
+console.log( simpleHash("green", 11) );
+console.log( simpleHash("sdifjdfsd", 11) );
+console.log( simpleHash("12dfbsd", 11) );
+console.log( simpleHash("mohagan", 11) );
