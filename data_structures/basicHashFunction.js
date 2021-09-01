@@ -40,10 +40,9 @@ figure out how to deal with that situation.
 
 //-------------------------------------------------------------------------------
 
-// basic hash function using strings:
+// ----Basic hash function (for strings only):
 
-// eg: 
-// hash("pink", 100) -> this will map the string 'pink' to be a number 
+// basicHashFunc("pink", 100) -> this will map the string 'pink' to be a number 
 // between zero and 100.
 
 // a decent way to do this is to use the underlying UTF character code
@@ -54,32 +53,37 @@ figure out how to deal with that situation.
 // then you can take that total and MODULO by the LENGTH of the array 
 // and voila, you have a basic hash function for strings. 
 
-// here's an example of a simple hash function for strings: 
+// Throw in a prime number to shuffle things up a bit. Having the 
+// table be a prime number size also helps a lot with collisions.  
 
-function simpleHash(key, arrLen) {
+function basicHashFunc(key, arrLen) {
+
   let total = 0;
   let hash; 
+  let WEIRD_PRIME = 31; 
 
-  // In for condition, limit length of string looked at so that  
-  // func doesn't become linear.
+  // Whichever is smaller, key length or 100, becomes the string length. 
+  // so we avoid the time complexity growing linearly for str length 
   for( let i = 0; i < Math.min( key.length, 100 ); i++ ) {
+
+    // grab each charater per iteration 
+    let char = key[i]; 
 
     // map 'a' to 1, 'b' to 2, 'c' to 3, etc
     let value = char.charCodeAt(0) - 96;
 
     // keep a running total of the char code value modulo'ed by array length 
-    total = ( total + value ) % arrLen; 
+    // also added in a prime number multiplier to mix things up 
+    total = ( total * WEIRD_PRIME + value ) % arrLen; 
 
   }
 
-  hash = total; 
-
+  hash = total; // I'm a stickler for naming I suppose
   return hash; 
 
 }
 
-console.log( simpleHash("blue", 11) );
-console.log( simpleHash("green", 11) );
-console.log( simpleHash("sdifjdfsd", 11) );
-console.log( simpleHash("12dfbsd", 11) );
-console.log( simpleHash("mohagan", 11) );
+console.log( basicHashFunc("blue", 13) );
+console.log( basicHashFunc("green", 13) );
+console.log( basicHashFunc("mkey", 13) );
+console.log( basicHashFunc("mohagan", 13) );
