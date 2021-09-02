@@ -1,5 +1,4 @@
 // Hash funcionts, hash tables, etc.
-
 /*
 
 To implement a hash table, we will use an array.

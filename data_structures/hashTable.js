@@ -38,7 +38,7 @@ figure out how to deal with that situation.
 */
 
 class HashTable {
-  constructor( size = 53 ){
+  constructor( size = 4 ){
     this.keyMap = new Array(size);
   }
 
@@ -71,9 +71,41 @@ class HashTable {
 
   // Accepts a key and value
   // Hashes the key
-  // Stores the key-value pair in the hash table array via separate chaining.
-  set(key, value) {
+  // Stores the key-value pair in the hash table array via separate chaining (nested arr)
+  set( key, value ) {
+
+    // get a hash
+    let index = this._hash( key );
+
+    // if nothing at that index, make a new array at that index
+    // and push the key and val to it. 
+    // otherwise just push another new array at that index with a key and value
+    if( !this.keyMap[index] ) {
+      this.keyMap[index] = [];
+    }
+    this.keyMap[index].push( [key, value] );
+
+  }
+
+  // Accepts a key
+  // Hashes the key
+  // Retrieves the key value pair found in hash table
+  // If key isn't found return undefined 
+  get( key ) {
 
   }
 
 }
+
+let ht = new HashTable();
+
+console.log( ht.set("hello world", "goodbye") )
+console.log( ht.set("dogs", "are cool") )
+console.log( ht.set("cats", "are fine") )
+console.log( ht.set("I love", "pizza") )
+console.log( ht.set("hi", "bye") )
+console.log( ht.set("french", "fries") )
+
+console.log( ht.keyMap );
+
+
