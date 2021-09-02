@@ -77,9 +77,9 @@ class HashTable {
     // get a hash
     let index = this._hash( key );
 
-    // if nothing at that index, make a new array at that index
+    // If nothing at that index, make a new array at that index
     // and push the key and val to it. 
-    // otherwise just push another new array at that index with a key and value
+    // Otherwise just push another new array at that index with a key and value
     if( !this.keyMap[index] ) {
       this.keyMap[index] = [];
     }
@@ -93,19 +93,46 @@ class HashTable {
   // If key isn't found return undefined 
   get( key ) {
 
+    let index = this._hash( key );
+
+    // if a key exists at the hash index...
+    if( this.keyMap[index]) {
+
+      // loop through the sub arrays at that index 
+      for( let i = 0; i < this.keyMap[index].length; i++ ) {
+
+        // if the first index of the subarray is the key return value of the subarray
+        // 2d array so its the [index] of the [index] 's first index === key 
+        if ( this.keyMap[index][i][0] === key ) {
+          return this.keyMap[index][i][1]; // return value only 
+        }
+
+      }
+
+    }
+
+    // otherwise return undefined 
+    return undefined; 
+
   }
 
 }
 
-let ht = new HashTable();
+let ht = new HashTable(17);
 
-console.log( ht.set("hello world", "goodbye") )
-console.log( ht.set("dogs", "are cool") )
-console.log( ht.set("cats", "are fine") )
-console.log( ht.set("I love", "pizza") )
-console.log( ht.set("hi", "bye") )
-console.log( ht.set("french", "fries") )
+ht.set("maroon", "#800000")
+ht.set("yellow", "#FFFF00") 
+ht.set("olive", "#808000") 
+ht.set("salmon", "#FA8072") 
+ht.set("lightcoral", "#F08080") 
+ht.set("mediumvioletred", "#C71585") 
+ht.set("plum", "#DDA0DD") 
+
 
 console.log( ht.keyMap );
+
+console.log( ht.get("yellow") );
+console.log( ht.get("plum") );
+console.log( ht.get("olive") );
 
 
