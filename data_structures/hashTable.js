@@ -116,6 +116,60 @@ class HashTable {
 
   }
 
+  // loop through the hash table array and return an array of keys in table
+  keys() {
+
+    let keysArr = [];
+
+    // loop the whole table 
+    for( let i = 0; i < this.keyMap.length; i++) {
+
+      // if there's something at a hashtable index 
+      if( this.keyMap[i] ) {
+
+        // loop out and push in all keys at that index 
+        for( let j = 0; j < this.keyMap[i].length; j++ ) {
+          keysArr.push(this.keyMap[i][j][0]);
+        }
+
+      }
+
+    }
+
+    return keysArr; 
+
+  }
+
+  // loop through hash table array and return array of values in the table
+  // only return unique values 
+  values() {
+
+    let valuesArr = [];
+
+    // loop the whole table 
+    for( let i = 0; i < this.keyMap.length; i++) {
+
+      // if there's something at that hash table index 
+      if( this.keyMap[i] ) {
+
+        // loop out and push in all values at that index 
+        for( let j = 0; j < this.keyMap[i].length; j++ ) { 
+
+          // check if value is in array already, if not, then push 
+          if(!valuesArr.includes( this.keyMap[i][j][1] ) ) {
+            valuesArr.push( this.keyMap[i][j][1] );
+          }
+          
+        }
+
+      }
+
+    }
+
+    return valuesArr; 
+
+  }
+
 }
 
 let ht = new HashTable(17);
@@ -127,6 +181,8 @@ ht.set("salmon", "#FA8072")
 ht.set("lightcoral", "#F08080") 
 ht.set("mediumvioletred", "#C71585") 
 ht.set("plum", "#DDA0DD") 
+ht.set("purple", "#DDA0DD")  // duplicate value 
+ht.set("violet", "#DDA0DD")  // duplicate value 
 
 
 console.log( ht.keyMap );
@@ -135,4 +191,6 @@ console.log( ht.get("yellow") );
 console.log( ht.get("plum") );
 console.log( ht.get("olive") );
 
+console.log( ht.keys() );
 
+console.log( ht.values() );
