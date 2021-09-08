@@ -45,25 +45,6 @@ Lets take this graph. Find the shortest path from A to E.
 */               
 
 
-class WeightedGraph {
-  constructor() {
-    this.adjacencyList = {}
-  }
-
-  addVertex( vertex ) {
-    if( !this.adjacencyList[vertex] ) {
-      this.adjacencyList[vertex] = [];
-    }
-  }
-
-  addEdge( vertex1, vertex2, weight ) {
-    this.adjacencyList[vertex1].push( { node: vertex2, weight } );
-    this.adjacencyList[vertex2].push( { node: vertex1, weight } );
-  }
-
-}
-
-
 // simple priority queue that uses a sorting algo, not a heap
 class PriorityQueue {
   constructor() {
@@ -85,6 +66,33 @@ class PriorityQueue {
 
 }
 
+
+class WeightedGraph {
+  constructor() {
+    this.adjacencyList = {}
+  }
+
+  addVertex( vertex ) {
+    if( !this.adjacencyList[vertex] ) {
+      this.adjacencyList[vertex] = [];
+    }
+  }
+
+  addEdge( vertex1, vertex2, weight ) {
+    this.adjacencyList[vertex1].push( { node: vertex2, weight } );
+    this.adjacencyList[vertex2].push( { node: vertex1, weight } );
+  }
+
+  dijkstraShortest( startV, endV) {
+
+  }
+
+}
+
+
+
+
+// priority queue tests: 
 var q = new PriorityQueue();
 
 q.enqueue('B', 3)
