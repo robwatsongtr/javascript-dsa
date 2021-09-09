@@ -60,28 +60,35 @@ class Graph {
   
   BFS_graph( start ) {
 
-    let queue = [];
-    let result = [];
-    let visited = {};
+    let queue = []; // queue modeled in an array
+    let result = []; // store the full traveral 
+    let visited = {}; // object: name is vertex and value is boolean 
+
     let currentVertex;
     let adjacencyList = this.adjacencyList; 
+
     visited[start] = true; 
 
-    queue.push( start )
-    visited[start] = true; 
-    
+    queue.push( start ) // push the starting node on to queue
+    visited[start] = true;  // mark it as true 
+     
     while( queue.length > 0 ){
 
       // lets see what's going on, yay! 
+      console.log('');
       console.log('queue: ', queue);
+      console.log('');
+      console.log('visited:', visited); 
+      console.log('');
       console.log('result:', result); 
 
-      // remove vertex from front of queue and push into result array
+      // remove vertex from front of queue (dequeue) and push into result array
       currentVertex = queue.shift(); 
       result.push( currentVertex );
 
       // Loop over each vertex in the adj list for the vertex you are visitng.
-      // if it is not inside the object that stores visited nodes, mark it as
+      //
+      // if it is not visited object, mark it as
       // visited and enqueue (push) that vertex.
       adjacencyList[currentVertex].forEach( neighbor  => {
         if( !visited[neighbor] ) {
