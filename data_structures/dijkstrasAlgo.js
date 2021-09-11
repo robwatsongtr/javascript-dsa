@@ -74,6 +74,7 @@ class WeightedGraph {
     const nodes = new PriorityQueue();
     const distances = {};
     const previous = {};
+    let smallest; 
 
     // Build up initial state:
     //
@@ -85,6 +86,7 @@ class WeightedGraph {
     //
     // 3. Set all vertices in previous to be null 
     for( let vertex in this.adjacencyList ) {
+
       if( vertex === start ) {
         distances[vertex] = 0; // 1
         nodes.enqueue( vertex, 0 ) // 2
@@ -93,6 +95,25 @@ class WeightedGraph {
         nodes.enqueue(vertex, Infinity); // 2
       }
       previous[vertex] = null; // 3
+
+    }
+
+    // as long as there are verticies to visit...
+    while( nodes.values.length ) {
+
+      // Dequeue a vertex from the queue. 
+      // If its the same as the ending vertex we're done. 
+      smallest = nodes.dequeue().val; 
+      if( smallest === finish  ) {
+        // Done. build path to return 
+      }
+
+      // otherwise loop through each value in the adj list at that vertex.
+      if( smallest || distances[smallest] !== Infinity ) {
+
+      }
+
+
     }
 
 
