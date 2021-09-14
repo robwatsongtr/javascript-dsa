@@ -111,6 +111,10 @@ class WeightedGraph {
       // otherwise loop through each value in the adj list at that vertex.
       if( smallest || distances[smallest] !== Infinity ) {
 
+        for( let neighbor in this.adjacencyList[smallest] ) {
+          let nextNode = this.adjacencyList[smallest][neighbor];
+          console.log(nextNode);
+        }
       }
 
 
