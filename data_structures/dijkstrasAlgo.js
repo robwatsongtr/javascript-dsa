@@ -74,7 +74,7 @@ class WeightedGraph {
     const nodes = new PriorityQueue();
     const distances = {};
     const previous = {};
-    let smallest; 
+    let smallest; // current smallest value 
 
     // Build up initial state:
     //
@@ -98,11 +98,12 @@ class WeightedGraph {
 
     }
 
-    // as long as there are verticies to visit...
+    // as long as there are nodes in the priority queue 
     while( nodes.values.length ) {
 
-      // Dequeue a vertex from the queue. 
+      // Dequeue a vertex from the queue. This will give current smallest value.
       // If its the same as the ending vertex we're done. 
+      // don't forget, finish is the variable for the ending vertex. 
       smallest = nodes.dequeue().val; 
       if( smallest === finish  ) {
         // Done. build path to return 
