@@ -75,6 +75,7 @@ class WeightedGraph {
     const distances = {};
     const previous = {};
     let smallest; // current smallest value 
+    let path = []; // to return at end
 
     // Build up initial state:
     //
@@ -88,13 +89,13 @@ class WeightedGraph {
     for( let vertex in this.adjacencyList ) {
 
       if( vertex === start ) {
-        distances[vertex] = 0; // 1
-        nodes.enqueue( vertex, 0 ) // 2
+        distances[vertex] = 0; 
+        nodes.enqueue( vertex, 0 ) 
       } else {
-        distances[vertex] = Infinity;  // 1
-        nodes.enqueue(vertex, Infinity); // 2
+        distances[vertex] = Infinity;  
+        nodes.enqueue(vertex, Infinity); 
       }
-      previous[vertex] = null; // 3
+      previous[vertex] = null;
 
     }
 
@@ -103,26 +104,48 @@ class WeightedGraph {
 
       // Dequeue a vertex from the queue. This will give current smallest value.
       // If its the same as the ending vertex we're done. 
-      // don't forget, finish is the variable for the ending vertex. 
+      // 'finish' is the variable for the ending vertex that is passed in.
       smallest = nodes.dequeue().val; 
-      if( smallest === finish  ) {
-        // Done. build path to return 
+      if( smallest === finish ) {
+        // build up path to return at end
+        while( previous[smallest] ) {
+          path.push(smallest);
+          smallest = previous[smallest];
+        }
+        break;
+
       }
 
       // otherwise loop through each value in the adj list at that vertex.
       if( smallest || distances[smallest] !== Infinity ) {
 
         for( let neighbor in this.adjacencyList[smallest] ) {
+          // find neighboring node
           let nextNode = this.adjacencyList[smallest][neighbor];
-          console.log(nextNode);
+          // console.log(nextNode);
+          // calculate new distance to neighboring node
+          let candidate = distances[smallest] + nextNode.weight;
+          let nextNeighbor = nextNode.node
+          if( candidate < distances[nextNode.node] ) {
+            // updating new smallest distance to neighbor
+            distances[nextNeighbor] = candidate; 
+            // updating previous - how we got to neighbor 
+            previous[nextNeighbor] = smallest; 
+            // enqueue in priority queue with new priority 
+            nodes.enqueue(nextNeighbor, candidate);
+          }
         }
+
       }
 
 
-    }
+    } 
 
+    const finalPath = path.concat(smallest).reverse();
 
+    console.log(finalPath);
 
+    // return finalPath
   }
 
 }
