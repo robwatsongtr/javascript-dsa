@@ -12,13 +12,13 @@ It only works on problems with
 
 _Overlapping Subproblems are problems that can be broken down
 into subproblems _which are reused several times_
-For exampe, calculating a fibonacci number involves overlapping
+For example, calculating a fibonacci number involves overlapping
 subproblems, but merge sort almost always does not have any overlapping 
 subproblems. 
 
 _Optimal Substructure is when an optimal solution can be
 constructed from optimal solutions of its subproblems. 
-The optimalsolutions of the subproblems can be chained together 
+The optimal solutions of the subproblems can be chained together 
 to get the optimal solution of the entire problem. 
 
 */
