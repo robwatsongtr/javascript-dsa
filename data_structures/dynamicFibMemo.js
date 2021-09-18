@@ -34,7 +34,7 @@ function fib(n) {
 }
 
 // memoized fib. fib(n) is stored in n'th index of an array for retrieval. 
-
+// O(n) time complexity. 
 function memoFib( n, memo = [] ) {
 
   // if solution to fib of n already found, just return that
@@ -43,6 +43,7 @@ function memoFib( n, memo = [] ) {
   if( n <= 2 ) return 1; // base case
 
   // each fib call is done and stored in the memo array
+  // at the index that corresponds to n itself 
   var result = fib( n-1, memo ) + fib( n-2, memo );
 
   memo[n] = result; 
