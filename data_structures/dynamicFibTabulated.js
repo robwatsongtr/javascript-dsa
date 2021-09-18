@@ -17,5 +17,5 @@ function tabfib( n ) {
 
 }
 
-console.log( tabfib(994) );
+console.log( tabfib(99) );
 
