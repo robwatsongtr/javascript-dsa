@@ -6,16 +6,24 @@ function binarySearch(arr, elem) {
   let middle = Math.floor( ( start + end) / 2); // avg and round    
 
   while( arr[middle] !== elem && start <= end)  {
-    if ( elem < arr[middle]) end = middle - 1; // shift right pointer to where middle was before
-    else start = middle + 1; // shift left pointer to where middle was before 
+
+    if ( elem < arr[middle] ) { 
+      end = middle - 1; // shift right pointer to where middle was before
+    }
+    else { 
+      start = middle + 1; // shift left pointer to where middle was before 
+    }
+
     middle = Math.floor( ( start + end) / 2); // recalculate middle 
+
   }
+  
   // "Return the result of whole statement, either the element or -1 "
   return arr[middle] === elem ? middle : -1;  
 } 
 
 
-console.log(binarySearch( [1,2,3,4,5], 2 ));
+console.log(binarySearch( [1,2,3,4,5], 5 ));
 
 console.log(binarySearch( [1,2,3,4,5], 3 ));
 
