@@ -1,13 +1,13 @@
 // Binary Search, Udemy Style 
 
-function binarySearch(arr, elem) {
+function binarySearch(nums, target) {
   let start = 0;
-  let end = arr.length - 1;
+  let end = nums.length - 1;
   let middle = Math.floor( ( start + end) / 2); // avg and round    
 
-  while( arr[middle] !== elem && start <= end)  {
+  while( nums[middle] !== target && start <= end)  {
 
-    if ( elem < arr[middle] ) { 
+    if ( target < nums[middle] ) { 
       end = middle - 1; // shift right pointer to where middle was before
     }
     else { 
@@ -19,7 +19,8 @@ function binarySearch(arr, elem) {
   }
   
   // "Return the result of whole statement, either the element or -1 "
-  return arr[middle] === elem ? middle : -1;  
+  return nums[middle] === target ? middle : -1;  
+  
 } 
 
 
