@@ -37,16 +37,16 @@ function fib(n) {
 // O(n) time complexity. 
 function memoFib( n, memo = [] ) {
 
-  // if solution to fib of n already found, just return that
+  // skips redunancy 
   if( memo[n] !== undefined ) return memo[n];
 
   if( n <= 2 ) return 1; // base case
 
   // each fib call is done and stored in the memo array
   // at the index that corresponds to n itself 
-  var result = fib( n-1, memo ) + fib( n-2, memo );
+  var result = memoFib( n-1, memo ) + memoFib( n-2, memo );
 
-  memo[n] = result; 
+  memo[n] = result; // puts the computation in to the memo array  
 
   return result; 
 
