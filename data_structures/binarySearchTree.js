@@ -75,24 +75,22 @@ class BinarySearchTree {
     let current = this.root; // current starts at root 
 
     // while there are nodes, and we havent found it......
+    // this loop will exit when the tree is fully traveresed,
+    // and set a boolean flag if the value is found, which will
+    // conveniently be stored in the current variable. 
     while( current && !found ) {
 
       if( val < current.val ) {
-
         current = current.left; // go to the left
-
       } else if ( val > current.val ) {
-
         current = current.right; // go to the right 
-
       } else {
-
         found = true; // found it! 
       }
     }
 
-    // didn't find it. 
-    if( !found ) return false; 
+    // didn't find it. the found flag wasnt changed in the loop, ie never got to the else
+    if( !found ) return undefined; 
 
     // found it so return the node 
     return current; 
