@@ -12,6 +12,8 @@ the right side*
 
 */
 
+const util = require('util')
+
 class Node {
   constructor(val) {
     this.val = val;
@@ -112,8 +114,13 @@ tree.insert(2);
 tree.insert(16);
 tree.insert(7);
 
-console.log( tree.find(10) );
 
-console.log( tree.find(16) );
 
-console.log( tree.find(82) );
+// console.log( tree.find(10) );
+
+// console.log( tree.find(16) );
+
+// console.log( tree.find(82) );
+
+
+console.log(util.inspect(tree, {showHidden: false, depth: null, colors: true}))

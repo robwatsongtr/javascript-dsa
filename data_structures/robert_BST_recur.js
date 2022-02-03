@@ -19,14 +19,14 @@ export default class BinarySearchTree {
   insertNode(root, newNode) {
     if (root == null) {
     return newNode;
-  }
+    }
     if (newNode.val == root.val) {
-    return root;
-  } else if (newNode.val < root.val) {
-    root.left = insertNode(root.left, newNode);
-  } else {
-    root.right = insertNode(root.right, newNode);
-  }
+      return root;
+    } else if (newNode.val < root.val) {
+      root.left = insertNode(root.left, newNode);
+    } else {
+      root.right = insertNode(root.right, newNode);
+    }
     return root;
   }
 }
