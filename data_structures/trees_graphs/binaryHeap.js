@@ -27,7 +27,21 @@ root being the first sub, then BFS across the first level,
 BFS across 2nd level, etc. 
 
 
----
+--------
+
+Differences between Binary Heap and and a binary search tree:
+
+Also, binary heaps can be efficiently implemented 
+on top of either dynamic arrays or pointer-based trees, BST only pointer-based trees.
+
+Basically, binary heaps have less flexibility than BST, but more speed. BSTs are effecient
+for ALL finds, not just find min. 
+
+Average time for _insertion_ into a Binary Heap is CONSTANT. For BST it is O(logn). This
+is the killer feature of heaps. 
+
+
+-------
 
 Binary Heap is typcally modeled in an array. 
 

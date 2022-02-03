@@ -10,6 +10,19 @@ manner:
 *Less than is on the left side of a parent node, greater than is on
 the right side*
 
+
+------------
+Differences between Binary Heap and and a binary search tree:
+
+Also, binary heaps can be efficiently implemented 
+on top of either dynamic arrays or pointer-based trees, BST only pointer-based trees.
+
+Basically, binary heaps have less flexibility than BST, but more speed. BSTs are effecient
+for ALL finds, not just find min. 
+
+Average time for _insertion_ into a Binary Heap is CONSTANT. For BST it is O(logn). This
+is the killer feature of heaps. 
+---------------
 */
 
 const util = require('util')
@@ -92,7 +105,10 @@ class BinarySearchTree {
     }
 
     // didn't find it. the found flag wasnt changed in the loop, ie never got to the else
-    if( !found ) return undefined; 
+    if( !found ) {
+      // console.log('not found');
+      return undefined; 
+    }
 
     // found it so return the node 
     return current; 
@@ -116,11 +132,11 @@ tree.insert(7);
 
 
 
-// console.log( tree.find(10) );
+console.log( tree.find(10) );
 
-// console.log( tree.find(16) );
+console.log( tree.find(16) );
 
-// console.log( tree.find(82) );
+console.log( tree.find(82) );
 
 
-console.log(util.inspect(tree, {showHidden: false, depth: null, colors: true}))
+// console.log(util.inspect(tree, {showHidden: false, depth: null, colors: true}))
