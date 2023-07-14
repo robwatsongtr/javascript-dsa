@@ -71,16 +71,15 @@ class BinaryTree {
 
     let data = []; // will return this at the end 
     let queue = []; // store visited nodes in queue
-    let atNode = this.root; // atNnode is current position in the tree 
-
-    queue.push(atNode); // enqueue the root into the queue 
+    
+    queue.push(this.root); // enqueue the root into the queue 
     
     // while there's anything in the queue, dequeue from the queue
-    while( queue.length ) {
-      atNode = queue.shift(); // take a node/value out of the queue
-      data.push(atNode.val); // push it into the return array 
-      if(atNode.left) queue.push(atNode.left); // if there's a left put it in the queue
-      if(atNode.right) queue.push(atNode.right); // if there's a right put it in the queue
+    while( queue.length > 0 ) {
+      this.root = queue.shift(); // take a node/value out of the queue (DEQUEUE)
+      data.push(this.root.val); // push it into the return array 
+      if(this.root.left) queue.push(this.root.left); // if there's a left put it in the queue
+      if(this.root.right) queue.push(this.root.right); // if there's a right put it in the queue
     }
     return data; 
   }
