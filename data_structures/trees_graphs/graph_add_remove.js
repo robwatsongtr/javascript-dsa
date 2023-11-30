@@ -15,7 +15,7 @@ _Weighted graph_ has a value associated with an edge.
 What we need to store a graph are the nodes and a way to store the connections.
 Two ways: Adjacency Matrix and Adjacency list.
 
-Adjacency Matrix is a nested 2-d array. 
+Adjacency Matrix is a 2-d array. 
 
 Adjacency List: use and array or list to store the edges in an array. You use
 the position in the array to store the connection. 
