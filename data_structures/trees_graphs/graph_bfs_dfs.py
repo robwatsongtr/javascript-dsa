@@ -48,7 +48,7 @@ class Graph:
             # check to make sure node exists in adj list first as guard clause
             if node in self.adjacency_list: 
                 # loop through and visit neighbors recursively 
-                for neighbor in adjacency_list[node]:
+                for neighbor in self.adjacency_list[node]:
                     if neighbor not in visited: 
                         dfs(neighbor)
 
@@ -59,7 +59,7 @@ class Graph:
     def breadth_first_search(self, start_node):
         queue = []
         result = []
-        visitied = {}
+        visited = {}
 
         # push starting node on to queue and mark as visited 
         queue.append(start_node)
@@ -68,7 +68,7 @@ class Graph:
         while len(queue) > 0:
             # dequeue front and push into result array
             current = queue.pop(0)
-            reuslt.append(current)
+            result.append(current)
 
             # check neighbors of the current node 
             if current in self.adjacency_list: # check if node has neighbors 
